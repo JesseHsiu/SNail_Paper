@@ -94,22 +94,30 @@
 }
 
 \maketitle
-
 \begin{abstract}
-We present \projectName{}, a nail-mounted device that sense user's fingernail contour and bend when force is applied on a surface. By using 3$\times$3 array of 0.2mm strain gauges, \projectName{} is small enough to fit within fingernail, and it is flexible and stretchable. Since the device is always available, it enables user to intuitively use smart TV/devices by simply performing gestures on surfaces around without touching devices. We evaluate this interface in motionless and motion mode. The system can achieved 90\% accuracy for classifying with different kinds of finger posture angle, levels of pressure in motionless mode. For motion mode, it can distinguish directions of movement with high accuracy(\textgreater 95\%). We also show applications of using \projectName{}, which lower the effort for ????.
+We present \projectName{}, a nail-mounted device that sense user's fingernail contour and bend when force is applied on surface. By using 3$\times$3 array of 0.2mm strain gauges, \projectName{} is small enough to fit within fingernail, and it is flexible and stretchable. Since the device is always available, it enables user to intuitively use smart TV/devices by simply performing gestures on surfaces around without touching devices. We evaluate this interface in motionless and motion mode. The system can achieved 90\% accuracy for classifying with different kinds of finger posture angle, levels of pressure in motionless mode. For motion mode, it can distinguish 8 directions of movement with high accuracy(\textgreater 95\%). We also show applications of using \projectName{}, which lower the effort for ????.
 \end{abstract}
 
-\keywords{Natural User Interface (NUI); Wearable electronics; fingernail; Strain gauges; }
+\keywords{Natural User Interface (NUI); Wearable electronics; fingernail; Strain gauges; Machine Learning; Nail pressure;}
 
 \category{H.5.m.}{Information Interfaces and Presentation
   (e.g. HCI)}{Input devices and strategies (e.g., mouse, touchscreen)} 
 
 \section{Introduction}
-
-
+%must have this!
+In summary, the main contributions of this paper are as follows:
+ \begin{itemize} %placeholder for now
+ \item Propose the new novel way to input on surface
+ \item Propose the new novel way to input on surface
+ \item Propose the new novel way to input on surface
+ \item Propose the new novel way to input on surface
+ \end{itemize}
 
 \section{Related Work}
-
+\subsection{Camera based}
+\subsection{Acoustic based}
+\subsection{Surface sensing based}
+\subsection{Finger sensing}
 
 \section{Hardware design}
 
@@ -117,27 +125,26 @@ We present \projectName{}, a nail-mounted device that sense user's fingernail co
 \subsection{Sensing Force Level}
 \subsection{Sensing Movement}
 
-%\section{Experiment design}
-
 \section{Prototype Design}
 \subsection{Hardware}
 \subsection{Software}
 
-\section{System Evaluation}
-
-\subsection{Experien}
-\subsubsection{Participants}
+\section{Evaluation: Motionless mode}
+The goal of this study is to explore whether the system is capable for classifying different kind of finger posture angle. Participants were asked to reproduce a series of instructed angle and force.
 \subsection{Participants}
+We recruited 16 participants (13 male, 3 female) between the ages of 20 and 23. All participants were right-handed and drew with their right index fingers on the surface. Each participants received \$5  after one hour experiment.
 \subsection{Apparatus}
-\subsection{Procedure}
-\subsection{Design}
+The apparatus is shown in Fig???. We used the Vicon 3D motion tracking system to avoid noise introduced by sensors when tracking the position of participants’ hands. Three retro-reflective markers were placed on the plane of the participant’s non-dominant hand and tracked by the Vicon system with 6 IR-cameras to define a 3D plane that corresponded to the palm surface. Moreover, one marker was placed at the tip of the pointing index finger. The system tracked the marker sets with 1mm accuracy.
+\subsection{Task and Procedure}
+In each trial, after the participant indicated his readiness, one of the drawings in Figure 3 appeared on a Keynote slide. The participant was asked an eyes-free input, that is, not to look at his left palm when sketching on it by right index finger; also, the starting point and stroke order of each drawing were provided. The trial was completed when the participant finished the sketch and dropped his right arm to get ready for the next trial.During the trial, the participant needed to wear a partial blind- fold modified from a sanitary mask to completely occlude the users view of his hand as shown in Figure 2.
 \subsection{Results}
 
-\section{User Study Two}
+
+\section{Evaluation: Motion mode}
 \subsection{Participants}
 \subsection{Apparatus}
-\subsection{Procedure}
-\subsection{Design}
+\subsection{Task and Procedure}
+\subsection{Data Processing}
 \subsection{Results}
 
 
