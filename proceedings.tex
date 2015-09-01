@@ -95,7 +95,7 @@
 
 \maketitle
 \begin{abstract}
-We present \projectName{}, a nail-mounted device that sense user's fingernail contour and bend when force is applied on surface. By using 3$\times$3 array of 0.2mm strain gauges, \projectName{} is small enough to fit within fingernail, and it is flexible and stretchable. Since the device is always available, it enables user to intuitively use smart TV/devices by simply performing gestures on surfaces around without touching devices. We evaluate this interface in motionless and motion mode. The system can achieved 90\% accuracy for classifying with different kinds of finger posture angle, levels of pressure in motionless mode. For motion mode, it can distinguish 8 directions of movement with high accuracy(\textgreater 95\%). We also show applications of using \projectName{}, which lower the effort for ????.
+We present \projectName{}, a nail-mounted device that sense user's fingernail contour and bend when force is applied on surface. By using 3$\times$3 array of 0.2mm strain gauges, \projectName{} is small enough to fit within fingernail, and it is flexible and stretchable. Since the device is always available, it allows user to intuitively use smart TV/devices by simply performing gestures on surfaces around without touching devices. We evaluate this interface in motionless and motion mode. The system can achieved 90\% accuracy for classifying with different kinds of finger posture angle, levels of pressure in motionless mode. For motion mode, it can distinguish 8 directions of movement with high accuracy. We also show some examples applications using this new interaction technique.
 \end{abstract}
 
 \keywords{Natural User Interface (NUI); Wearable electronics; fingernail; Strain gauges; Machine Learning; Nail pressure;}
@@ -114,10 +114,14 @@ In summary, the main contributions of this paper are as follows:
  \end{itemize}
 
 \section{Related Work}
-\subsection{Camera based}
-\subsection{Acoustic based}
-\subsection{Surface sensing based}
-\subsection{Finger sensing}
+\subsection{Functional work}
+Light ring provide an always-available 2D input on any surface. LightRing uses IR emmitter and gyroscope to acquire finger movements on any surface. IR emmitter is used for measuring the distance between the ring and the middle segment (middle phalanx) of the instrumented finger, and gyroscope is used for rotation rate. However, it need to correct for drift with a magnetometer for other longer interactions.
+\subsection{Camera Approches}
+NailSense use camera to track the finger tip’s color change, and then guess user is performing the touch or released gestures (using OpenCV). The limitation is camera needed and the gestures need to be performed in front of it. AirPincher is a handheld device which provides eye-free input within fingers and support 6 kinds of gesture with tactile feedback. User can use his/her thumb to pinch, swipe, rubbing at index and middle finger, and the demo of surfing websites also proposed. Nevertheless, camera needed and need to hold the device, not always avaliable.
+\subsection{Location work}
+MagNail is a study that augmenting nails with a magnet to detect user actions using a smart device which allows user actions to be detected via the magnetic sensor integrated in smart devices such as a smartphone or a tablet PC. The limitation is the error rates is pretty high on the button of the device. NailO use capacitive sensing on printed electrodes as a input surface. It is small and unobtrusive, existence could be forgotten and it has a high accuracy. However, it can onli support 5 kinds of gestures. 
+\subsection{Acoustic work}
+TapSense use a acoustic way to identify which gesture is pefromed by the users. They capture the sound when our fingers strike the screen, and use that sound pattern to recongnize the gesture. This approach doesn't require user to wear anything, but will need a microphone which already built in smart phones. Scratch input use the sound when fingernail is dragged over the surface of a textured material as finger input surface. Six Scratch Input gestures at about 90\% accuracy with less than five minutes of training and on wide variety of surfaces. However, the interface table will not always exist.
 
 \section{Hardware design}
 
@@ -126,7 +130,16 @@ In summary, the main contributions of this paper are as follows:
 \subsection{Sensing Movement}
 
 \section{Prototype Design}
+Physical changes on the surface of nail caused by finger motions and gestures on surface are visible to the human eye. However, there is still difficulty on detecting it through most sensing techniques because such physical changes are very small in comparison to that of finger joint movements. Moreover, physical changes on the surface of nail varies from person to person. Accordingly, we have two major requirements. First, a small and light device must be able to sense small physical changes. Second, a device must be able to extract individual information from multiple spots on the surface of a human nail. Among a variety of sensing techniques, we conclude that strain gauge sensors best fit our requirements for this prototype.
 \subsection{Hardware}
+Strain gauge sensors are sensitive devices used to measure very small strain and elongation of an object such as buildings, foundations, and other structures. In order to accomplish such measurement, a strain gauge must be adhesively attached to the object. Any tension or compression on the object leads to changes in the electrical resistance of the sensor.
+% a figure here
+
+In our prototype, the sensing stage of our prototype consists of a reusable hydrogel-based artificial skin and 9 [120-ohm 2-mm] strain gauge sensors. The artificial skin is attached to the surface of nail and acts as a sensor carrier. As shown in \autoref{fig:tie}, the sensors are distributed into a 3-by-3 grid configuration. The following sentences explain for such sensor layout. An average of human nail width is approximately [], and the base length of a [2-mm strain gauge is 6.3 mm]. In order to avoid physical contact between any two neighboring sensors causing strain interference, a spaced interval of [2 mm] separates them, resulting in 9 strain gauges in a 3-by-3 grid across the nail surface. The sensor array measures the deformations of multiple individual spots of the artificial skin caused by physical changes on the surface of nail. Thus, our prototype is made possible to become a finger gesture interface for general users.
+
+Next, the signal conditioning stage includes a Wheatstone bridge, 2 8-to-1 analog switches (MAX4617, Maxim Integrated), a dual digital potentiometer (MCP42X1, Microchip), and an instrumental amplifier (INA122U, Analog Devices). Finally, the processing stage includes an Arduino Nano used to sample the sensors and control chips in the signal conditioning stage. The complete circuit diagram is shown in \autoref{fig:completeCircuitDiagram} and a customized circuit board is shown in \autoref{fig:hardware}.
+
+The 9 sensors are read sequentially through the analog switches, so each sensor is electrically connected at a time. Once a sensor is active, the sensor became one of the 4 resistors on the Wheatstone bridge. Since the resistance of each sensor varies under no applied external force, a digital potentiometer in series with the connected sensor is used for calibration. Another digital potentiometer serves the purpose of amplifier gain adjustment. In our prototype, the instrumental amplifier gain is set to be approximately 500. Due to the dynamic response time of the amplifier, a [100-microsecond delay] is added between each reading leading to a sampling rate of 75 Hz for our prototype.
 \subsection{Software}
 
 \section{Evaluation: Motionless mode}
