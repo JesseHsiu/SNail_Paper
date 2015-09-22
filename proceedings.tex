@@ -133,7 +133,7 @@ These works has proved that the device on top of fingernail's advantages. Howeve
 \end{figure}
 
 % 以下開始討論用指甲本身的特性 像是顏色改變
-This brings us to think about using fingernail as a input property proposed in \cite{NailSense}, which used a computer vision for sensing force touch.
+This brings us to think about using fingernail as a input property proposed in \cite{NailSense}, which is a work used a computer vision for sensing force touch.
 There are also works using fingernail itself as a sensing part. Mascaro et al.\cite{Photoplethysmograph} also implemented a nail-mounted device for observing changes in the reflection intensity on fingernail. (one more work!) However, the sensing technique of it still left in question for recognition of swiping gestures and it also is limited to sense a force which is not enough for out daily use.
 % TODO 這邊可能要改!!
 
@@ -264,13 +264,13 @@ In motionless mode, raw data is directly used for machine learning.
 Finally, we scale each feature to the range of -1 to 1 and then train a multi-class SVM classifier with a Radial Basis Function (RBF) kernel.
 
 \section{System Evaluation}
-The goal of the study is to explore whether the system is capable for classifying different kinds of swipe gestures and finger posture angles in different kinds of pressure level.
+The goal of the study is to explore: (1) The system is capable for classifying different kinds of swipe gestures when user perform gesture on surface. (2) Finger posture angles can be identified at user daily usage pressure level.
 
 \subsection{Participants}
-We recruited 10 participants (7 male, 3 female) between the ages of 20 and 23. All participants are right-handed and drew with their right index fingers on the surface. Each participants received \$5 after one hour experiment.
+We recruited 10 participants (7 male, 3 female) between the ages of 20 and 23(mean ??). All participants are right-handed and drew with their right index fingers on the surface. Each participants received \$5 after one and half hour experiment.
 \subsection{Apparatus} %設備！
 % TODO add Study one Figs
-The apparatus is shown in Fig???. We used the load-cell which is the same in our pilot study. In this experiment, we put a 9DOF sensor on user's index finger, it is only used for checking whether user is performing the correct position and angle. The surface we used in our study is medium-density fibreboard.
+We used the load-cell (Error: $\pm 0.5$ grams) which is the same in our previous pilot study. In this experiment, we instrumented a 9 degree of freedom(9DOF) sensor on user's index finger. Since the strain gauges are very sensitive the strain, we avoid 9DOF sensor to contact fingernail. And the 9DOF sensor is only used for checking whether user is performing the correct position and angle to collect the correct data. The surface we used in our study is medium-density fibreboard.
 
 \subsection{Task and Procedure}
 % Participants were asked to reproduce a series of instructed angle \cite{UnderstandingTouch} and force between 0.6N(Newton) to 1.0N.
