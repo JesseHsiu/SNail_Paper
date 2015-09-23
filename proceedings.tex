@@ -88,7 +88,7 @@
   \alignauthor{2nd Author Name\\
     \affaddr{Affiliation}\\
     \affaddr{City, Country}\\
-    \email{e-mail address}}\\
+    \email{e-mail address}}\
   \alignauthor{3rd Author Name\\
     \affaddr{Affiliation}\\
     \affaddr{City, Country}\\
@@ -97,11 +97,12 @@
 
 \maketitle
 \begin{abstract}
-We present \projectName{}, a nail augmented device that sense user's fingernail contour and bend when force is applied on surface. By using 3$\times$3 array of 0.2mm strain gauges, \projectName{} is small enough to fit on fingernail, and it is flexible and stretchable.
-We evaluate this interface in motion and motionless mode. The system can distinguish swipe gestures with high accuracy (93.2\%). For motionless mode, it can achieve 85.6\% accuracy for classifying with different kinds of finger posture.
+We present \projectName{}, a nail augmented device that senses user's fingernail contour and bend when force is applied on a surface. Using 3$\times$3 array of 0.2mm strain gauges, \projectName{} is small enough to fit on fingernails, and at the same time, flexible and stretchable.
+We evaluate this interface in motion and motionless mode. The system can distinguish swipe gestures with high accuracy (93.2\%). For motionless mode, it can achieve 85.6\% accuracy for classifying different kinds of finger postures.
 % TODO finger posture
-Since the device is always available input, it allows user to perform swipe gestures on surfaces around or touch postures on touch screen devices to enable different kinds of application usage.
-We also show some examples applications such as quickly swipe on surfaces around to control smart TV or touching on touchscreen devices to enable different application short cuts.
+Since the device is always available, it allows users to perform swipe gestures on surfaces around or touch postures on touch screen devices to enable a variation of application usage.
+We also show some example applications such as quick swiping on surfaces around to control smart TV's or touching on touchscreen devices to enable different application short cuts.
+% TODO 103 and 104 is pretty much the same.
 \end{abstract}
 
 \keywords{Natural User Interface (NUI); Wearable electronics; fingernail; Strain gauges; Machine Learning; Nail pressure;}
@@ -111,7 +112,7 @@ We also show some examples applications such as quickly swipe on surfaces around
 
 
 \section{Introduction}
-Recent works has seen new proposal for nail augmented device in body-attach computing. Fingernail has been widely adopted due to its characteristic of non-perception area. And it also has the advantages of its non-obstructive and most promising place for easy installation and removal\cite{MagNail}. Moreover, nail art is proposed in previous work\cite{NailDisplay,NailO}. We believe that using nail as mounted location will become more popular in the future.
+Recent works have seen new proposals for nail augmented devices in body-attached computing. Fingernails have been widely adopted due to its characteristic of lacking perception. It also has the advantage of being non-obstructive and the most promising place for easy installation and removal\cite{MagNail}. Moreover, nail art have been proposed in previous works\cite{NailDisplay,NailO}. We believe that using nail as a mounting location will become more popular in the future.
 
 % These devices are designed to be non-obstructive, small, lightweight and no disturbing in daily life. 
 
@@ -122,19 +123,19 @@ Recent works has seen new proposal for nail augmented device in body-attach comp
 
 % 一開始講在nail上面output的work
 % 在結尾開始講在nail上面做input的work
-Early works on fingernail mounted devices develop schemes to augment fingernail as an output of display and a signal source for sensors.
+Early works on fingernail mounted devices develop schemes to augment fingernails as an output of display and a signal source for sensors.
 % TODO 有點怪 please double check
 NailDisplay\cite{NailDisplay} mounts a visual display on top of fingernail to avoid the big thumb problem on touchscreen. Ando et al.\cite{NailTDisplay} proposes to put a small voice coil to control the tactile feedback from surface by changing waveforms. More than that, FingerSight\cite{FingerSight} implements a device consisting of a camera to extract environmental information. Previous research also demonstrates using nail-mounted device to enrich input area. NailO\cite{NailO} proposes a capacitive sensor grid on top of the fingernail to sense swipe and tap gestures.
-uTrack\cite{uTrack} and FingerPad\cite{FingerPad} 
-add on the fingertip with a small magnet, and using a magnetic field to track finger movements. TouchSense\cite{TouchSense} uses 3-axis accelerometer to detect finger postures for switching different modes of input.
-These works has proven the advantages of a device mounted on top of fingernails. However, these works has not explored the characteristics of a fingernail itself as a signal source.
+uTrack\cite{uTrack} and FingerPad\cite{FingerPad} add on the fingertip a small magnet, and uses a magnetic field to track finger movements. TouchSense\cite{TouchSense} uses 3-axis accelerometer to detect finger postures for switching different modes of input.
+These works have proven the advantages of a device mounted on top of fingernails. However, these works have not explored the characteristics of a fingernail itself as a signal source.
 
 \begin{figure}
   \begin{center}
-  \includegraphics[width=1\columnwidth]{figures/BackHand.png}
+  \includegraphics[width=0.9\columnwidth]{figures/landing.pdf}
   \caption{\projectName\ THIS IS A PLACE HOLDER FOR \projectName{}}
   \label{fig:main}
   \end{center}
+  \vspace{-1em}
 \end{figure}
 
 % 以下開始討論用指甲本身的特性 像是顏色改變
@@ -223,7 +224,7 @@ The computing hardware is consisted with an Arduino Nano board and two 8-to-1 an
 % hardware confirmed!!
 
 
-The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDiagram}. First, the multiplexers are sequentially selected to connect one of the strain gauges. Once one of the strain sensors is selected, it becomes one of the 4 resistors on the Wheatstone bridge. When the forces apply, the strain of fingernail let the sensor slight changed which caused the ohm value of strain gauges lower or higher. Due to the changes of ohm value, one side of the voltage in Wheatstone bridge also changed.
+The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDiagram}. First, the multiplexers are sequentially selected to connect one of the strain gauges. Once one of the strain sensors is selected, it becomes one of the four resistors on the Wheatstone bridge. When the forces apply, the strain of fingernail let the sensor slight bend or contour which caused the ohm value of strain gauges lower or higher. Due to the changes of ohm value, one side of the voltage in Wheatstone bridge also changed.
 % TODO 怪怪的
 
 \begin{figure}[t!]
@@ -233,15 +234,15 @@ The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDi
   \vspace{-0.8em}
 \end{figure}
 
-Since the requirement of sensing the slightly change of the strain from fingernail, we used two amplifier to magnify the difference on the Wheatstone bridge 4000 times. Finally, Arduino Nano read the final analog value from the amplifier's output. For the digital potentiometer, it is used for adjusting the resistance to let the Wheatstone bridge have no difference on both side during calibration.
+Due to the requirement of sensing the slightly change of the strain from fingernail, we used two amplifiers to magnify the difference on the two sides of Wheatstone bridge 4000 times. Finally, Arduino Nano reads the final analog value from the last amplifier's output. For the digital potentiometer, it is used for adjusting the resistance to let the Wheatstone bridge have no difference on both side during calibration.
 
 
 \subsection{Gesture / Posture Recognition}
 We used LIBSVM tool\cite{libsvm}, a popular machine learning open-source library for SVM which is a way to distinguish the pattern by vectors.
-Since the different of the input data sets, we implemented two algorithm specifically for swipe gestures (Motion mode) and finger posture (Motionless mode).
-In motion mode, sequentially and time based data is preprocessed by accumulate difference to the first data when the gesture begin. At the end, the sequentially data is processed to be one feature data.
+Since the difference of the input data sets, we implemented two algorithm specifically for swipe gestures (Motion mode) and finger posture (Motionless mode).
+In motion mode, sequentially and time based data is preprocessed by accumulating each data's difference from the first received data when the gesture began. At the end, the sequentially data is processed to be one feature data.
 In motionless mode, raw data is directly used for machine learning.
-For each mode, we scale each feature to the range of -1 to 1 at the end and then train a multi-class SVM classifier with a Radial Basis Function (RBF) kernel.
+For each mode, we scale each modes' feature to the range of -1 to 1 and then train a multi-class SVM classifier with a Radial Basis Function (RBF) kernel.
 %\begin{figure*}[bp]
 % \begin{center}
 %  \setcounter{figure}{5}
@@ -263,8 +264,10 @@ We recruited 10 participants (7 male, 3 female) between the ages of 20 and 23(me
 We used the load-cell (Error: $\pm 0.5$ grams) which is the same in our previous pilot study. In this experiment, we instrumented a 9 degree of freedom (9DOF) sensor on user's index finger. Since the strain gauges are very sensitive to the strain, we avoid 9DOF sensor to contact fingernail. And the 9DOF sensor is only used for checking whether user is performing the applicable position and angle for collecting data. The surface we used in our study is medium-density fibreboard.
 
 \begin{figure}[t!]
-  \includegraphics[width=1\columnwidth]{figures/PCB.png}
-  \caption{The apparatus in our user study. At the surface, we put a load-cell sensor below. For each user, we put a 9DOF sensor on finger and our \projectName{} device on fingernail.}
+	\begin{center}
+  \includegraphics[width=0.9\columnwidth]{figures/apparatus.pdf}
+  \end{center}
+  \caption{The apparatus in our user study. At the surface, we put a load-cell sensor below (b). For each user, we put a 9DOF (c) sensor on finger and our \projectName{} device on fingernail.}
   \label{fig:apparatus}
 \end{figure}
 
