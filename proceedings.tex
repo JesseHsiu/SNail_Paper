@@ -125,7 +125,7 @@ Recent works have seen new proposals for nail augmented devices in body-attached
 Early works on fingernail mounted devices develop schemes to augment fingernails as an output of display and a signal source for sensors.
 % TODO 有點怪 please double check
 NailDisplay\cite{NailDisplay} mounts a visual display on top of fingernail to avoid the big thumb problem on touchscreen. Ando et al.\cite{NailTDisplay} proposes to put a small voice coil to control the tactile feedback from surface by changing waveforms. More than that, FingerSight\cite{FingerSight} implements a device consisting of a camera to extract environmental information. Previous research also demonstrates using nail-mounted device to enrich input area. NailO\cite{NailO} proposes a capacitive sensor grid on top of the fingernail to sense swipe and tap gestures.
-uTrack\cite{uTrack} and FingerPad\cite{FingerPad} add on the fingertip a small magnet, and uses a magnetic field to track finger movements. TouchSense\cite{TouchSense} uses 3-axis accelerometer to detect finger postures for switching different modes of input.
+uTrack\cite{uTrack} and FingerPad\cite{FingerPad} places small magnet on the fingertip, and uses a magnetic field to track finger movements. TouchSense\cite{TouchSense} uses 3-axis accelerometer to detect finger postures for switching different modes of input.
 These works have proven the advantages of a device mounted on top of fingernails. However, these works have not explored the characteristics of a fingernail itself as a signal source.
 
 \begin{figure}
@@ -140,13 +140,13 @@ These works have proven the advantages of a device mounted on top of fingernails
 % 以下開始討論用指甲本身的特性 像是顏色改變
 This brings us to think about using a fingernail as an input property proposed in \cite{NailSense}, which senses force touch via computer vision.
 % There are also works using fingernail itself as a sensing part.
-Mascaro et al.\cite{Photoplethysmograph} also implements a nail-mounted device for observing changes in the reflection intensity on a fingernail. (one more work!) However, the sensing technique still leaves in question for recognition of swiping gestures and it also is limited to sense a force which is not enough for daily use.
+Mascaro et al.\cite{Photoplethysmograph} also implements a nail-mounted device for observing changes in the reflection intensity on a fingernail. (one more work!) However, the sensing technique still leaves in question the recognition of swiping gestures and is limited to force sensing which is not enough for daily use.
 % TODO 這邊要多加work! 應該要三篇比較ok，大源說要改成還沒explore
 
-In order to explore better sensing technique of nail augmented device, we aims to design a device that achieved following designs. First, it has the ability of sensing simple gestures on surface like swiping and tapping. Second, it has no restrictions of input area which can enable user to perform gestures on surfaces around. Finally, it should comes with light and thin form factor due to the place of fingernail.
-The proposed design will definitely be a novel input device for increasing the mobility of touch screen. It also can be perform gestures anywhere without physical effort.
+In order to explore better sensing technique of nail augmentation, we aim to design a device that achieved the following designs. First, it has the ability of sensing simple gestures (e.g. swiping and tapping) on surfaces. Secondly, it has no restrictions on input area which enable users to perform gestures on surfaces around. Finally, it should come in a light and thin form factor to preserve the unobtrusiveness of fingernails.
+The proposed design will be a novel input device for increasing the mobility of touch screen. It also can be perform gestures anywhere without physical effort.
 
-In this paper, we developed a prototype, \projectName{} (\autoref{fig:main}), use a 3$\times$3 array of strain gauges sensor to explore the strains from fingernail as input technique.
+In this paper, we developed a prototype, \projectName{} (\autoref{fig:main}), utilizing a 3$\times$3 array of strain gauges sensor to explore the technique of using strains from fingernail as input.
 
 % mobility  in enhancing the modality of finger interaction, and expanding the interaction space due to the gesture can be performed everywhere.
 
@@ -199,11 +199,12 @@ In summary, the main contributions of this paper are as follows:
 % TapSense\cite{TapSense} use a acoustic way to identify which gesture is preformed by the users. They capture the sound when our fingers strike the screen, and use that sound pattern to recognize the gesture. This approach doesn't require user to wear anything, but will need a microphone which already built in smart phones. Scratch input use the sound when fingernail is dragged over the surface of a textured material as finger input surface. Six Scratch Input gestures at about 90\% accuracy with less than five minutes of training and on wide variety of surfaces. However, the interface table will not always exist.
 
 \section{Prototype Design}
-In order to design a nail augmented device to sense a touch or gesture on surfaces, we have few mainly requirements. First of all, the device must be small enough to fit within fingernail. Second, it should have ability of sensing slightly changes of the strain from fingernail. Last but not least, it has to be reusable and easy for installation and removing. Based on above of requirements, we derived that using a 2D array of 0.2mm strain gauges is the appropriate solution for this prototype. In order to fit on every users' fingernail, we conducted a pilot study to collect the average size of fingernail.
+To design a nail augmented device for touch or gesture sensing, few main requirements were met. First of all, the device must be small enough to fit within fingernail. Second, it should have ability of sensing slightly changes of the strain from fingernail. Last but not least, it has to be reusable and easy for installation and removing. Based on above of requirements, we derived that using a 2D array of 0.2mm strain gauges is the appropriate solution for this prototype. To derive a general fitting, we conducted a pilot study to collect the average size of fingernail.
+
 \subsection{Pilot Study : Size of Fingernail and Human Behaviour}
-Before developing device, we recruited 10 participants (7 male, 3 female) from ages 20 and 24 (mean 21.2) to find average width and height of fingernail. We also requested user to perform tap gesture on electronic load-cell to measure how much pressure applied on the surface in daily life for investigating the ability of strain gauges.
-The result of this pilot study, fingernail width is 1.145cm(SD=0.14) and height is 1.21cm(SD=0.17). 
-And the average of tap pressure measured 0.82N(SD=0.26).
+We recruited 10 participants (7 male, 3 female) from ages 20 and 24 (mean 21) to find an average width and height of fingernail. We also requested users to perform tap gesture on electronic load-cell to measure how much pressure is normally applied on a surface to investigate the ability of strain gauges.
+The result of this pilot study, fingernail width is 1.145cm (SD=0.14) and height is 1.21cm (SD=0.17). 
+And the average of tap pressure measured 0.82N (SD=0.26).
 % The changes of color on fingernail are obvious when we press pressure changes, 
 
 % , trains from fingernail is 
@@ -216,16 +217,18 @@ And the average of tap pressure measured 0.82N(SD=0.26).
 %   \label{fig:completeCircuitDiagram2}
 % \end{figure}
 
+% TODO pilot前綴？
+% TODO 3x3 array issue.
 \subsection{Hardware}
 % The device is height 0.8cm and width 1.0cm
-We developed \projectName{} using a 3$\times$3 array of 120-ohm 0.2-mm strain gauges for sensing part (Shown in \autoref{fig:main}). Below of the strain gauges, we used a stretchable and flexible artificial-skin to stick sensors on user's fingernail. The size of it only takes 0.9cm$\times$1cm which is smaller than 1 cent of US dollar, and the thickness of it is 1mm. Each of the strain gauge is directly wired to the computing part.
-The computing hardware is consisted with an Arduino Nano board and two 8-to-1 analog switches(MAX4617, Maxim Integrated), a dual digital potentiometer (AD5231, Analog Devices), and two instrumental amplifiers (INA133 and INA122U, Analog Devices). 
+We developed \projectName{} using a 3$\times$3 array of 120-ohm 0.2-mm strain gauges for sensing part (Shown in \autoref{fig:main}). Below the strain gauges, we used a stretchable and flexible artificial-skin to adhere sensors onto user's fingernail. The size of it only takes 0.9cm$\times$1cm which is smaller than 1 US cent, and the thickness of it is 1mm. Each of the strain gauge is directly wired to the computing part.
+The computing hardware is consisted of an Arduino Nano board and two 8-to-1 analog switches(MAX4617, Maxim Integrated), a dual digital potentiometer (AD5231, Analog Devices), and two instrumental amplifiers (AD623 and INA122U, Analog Devices). 
+% TODO check hardware
 % hardware confirmed!!
 
 
-The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDiagram}. First, the multiplexers are sequentially selected to connect one of the strain gauges. Once one of the strain sensors is selected, it becomes one of the four resistors on the Wheatstone bridge. When the forces apply, the strain of fingernail let the sensor slight bend or contour which caused the ohm value of strain gauges lower or higher. Due to the changes of ohm value, one side of the voltage in Wheatstone bridge also changed. This difference becomes our sensing signal input.
+The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDiagram}. First, the multiplexers are sequentially selected to connect one of the strain gauges. Upon one of the strain sensors is selected, it becomes one of the four resistors on the Wheatstone bridge. When the forces apply on fingertip, the strain of fingernail let the sensor slight bend or contour which causes the ohm value of strain gauges lower or higher. Due to the changes of ohm value, one side of the voltage in Wheatstone bridge also changed. This difference becomes our sensing signal input.
 
-% TODO 圖片要改電橋的樣子
 \begin{figure}[t!]
   \hspace{-2em}\includegraphics[width=1.1\columnwidth, height=0.47\linewidth]{figures/CompleteDiagram_v4.pdf}
   \caption{The complete circuit diagram. Sensing part is consisted with 9 strain gauges. For computing part, we actually used two analog multiplexers and the instrumental amplifier is made up of two amplifiers as well.}
@@ -253,11 +256,9 @@ For each mode, we scale data's feature to the range of -1 to 1 and then train a 
 %  \end{center}
 %\end{figure*}
 \section{System Evaluation}
-% TODO Figs for swipe gesture
 The goal of the study is to explore: (1) The system is capable for classifying different kinds of swipe gestures when user perform gesture on surface. (2) Finger posture angles can be identified at user daily usage pressure level. (3) The device is able to sense a force touch. 
 
 \subsection{Participants}
-% TODO check mean age
 We recruited 10 participants (7 male, 3 female) between the ages of 20 and 23(mean 21.3). All participants are right-handed and drew with their right index fingers on the surface. Each participants received \$5 after one hour experiment.
 \subsection{Apparatus} %設備！
 We used the load-cell (Error: $\pm 0.5$ grams) which is the same in our previous pilot study. In this experiment, we instrumented a 9 degree of freedom (9DOF) sensor on user's index finger. Since the strain gauges are very sensitive to the strain, we avoid 9DOF sensor to contact fingernail. And the 9DOF sensor is only used for checking whether user is performing the applicable position and angle for collecting data. The surface we used in our study is medium-density fibreboard.
@@ -322,7 +323,6 @@ The result of this study is shown in \autoref{fig:swiperesult}. Off-line accurac
 \end{figure}
 
 % 此部分數據已確認!!
-% TODO Add data
 %\begin{figure}[t!]
 %  \includegraphics[width=1\columnwidth]{figures/fingerposture.png}
 %  \caption{Swipe Gestures in user study}
@@ -359,12 +359,10 @@ The result of this study is shown in \autoref{fig:swiperesult}. Off-line accurac
 % TODO 這邊要改
 % In each trial, after the participant indicated his readiness, one of the drawings in Figure 3 appeared on a Keynote slide. The participant was asked an eyes-free input, that is, not to look at his left palm when sketching on it by right index finger; also, the starting point and stroke order of each drawing were provided. The trial was completed when the participant finished the sketch and dropped his right arm to get ready for the next trial.%During the trial, the participant needed to wear a partial blind- fold modified from a sanitary mask to completely occlude the users view of his hand as shown in Figure 2.
 The accuracy due to chance was 20\%. Off-line accuracy was computed using 5-fold cross-validation of the evaluation data. The mean accuracy for mixed all force data together across all participants was 76.9\% (SD: $\pm$13.17\%). The confusing matrix for each force level is shown in \autoref{fig:postureResult}, which shows that the higher pressure level the better accuracy gets. So if we drop 0.4N and 0.6N data, the accuracy can reach 82.44\% (SD: $\pm$12.74\%). Note that most of the error happened in the angle of pitch 45 degree with roll 45 degree. We think it is due to the user sometimes perform postures directly using fingernail instead of fingertip to touch the surface when the roll angle is higher. This caused strain gauges different value for each trail which raise this error classification. For sensing force touch, we used 5-fold cross-validation to evaluate. However, it shows that it can only distinguish 0.4N and 1.2N pressure with 70\% (SD: $\pm$12.74\%) accuracy.
-
-
-
+% TODO 此部分數據尚未確認!!
 
 %and the caused of the this due to the user sometimes perform postures directly using nail to touch the surface which caused strain gauges different value. We also run 10-fold cross-validation for our pressure value. It turns out that the device cannot distinguish the difference of slightly changes of pressure. The device only can distinguish the pressure level of difference with 90\% accuracy when it comes to 0.4N with 1.2N.
-% TODO 此部分數據尚未確認!!
+
 
 
 \section{Example Application}
