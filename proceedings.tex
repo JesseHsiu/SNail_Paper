@@ -172,13 +172,6 @@ In this paper, we developed a prototype, \projectName{} (\autoref{fig:FIGURE1}),
 % Wolf et al.\cite{LightRing} provides a ring that can track 
 % Products such as nail art stickers and fake eyelashes are widely accepted as extensions to the body for decoration and self-expression. They seamlessly blend into our physical bodies when attached, and are easily removable. As people already wear these products for fashion purposes, we propose embedding technology into these products to extend their functionality and utility to interaction.bodies when attached, and are easily removable.
 % 
-
-% However, 
-% However, 
-
-
-% 
-% 
 % Products such as nail art stickers and fake eyelashes are widely accepted as extensions to the body for decoration and self-expression. They seamlessly blend into our physical bodies when attached, and are easily removable. As people already wear these products for fashion purposes, we propose embedding technology into these products to extend their functionality and utility to interaction.
 % To afford usability in the form of cosmetic extensions, three main design themes must be realized: First, the interface should be small and unobtrusive. It should be designed with technology that can be miniaturized to the size of cosmetic products. When worn, it should be comfortable to an extent its existence could be forgotten. Second, the interface should afford natural interactions. The interactions should be simple, intuitive and require minimal cognitive mapping, building on natural body gestures. Third, the interface should be appealing and easy to wear. Like clothing and accessories, the interface can be easily customized. The mounting and removal process should also be simple and similar to existing cosmetic processes. As no device exists that satisfies the above criteria, our work is motivated to do so.
 
@@ -246,24 +239,9 @@ Since the requirement of sensing the slightly change of the strain from fingerna
 \end{figure}
 
 
- 
-
-% Strain gauge sensors are sensitive devices used to measure very small strain and elongation of an object such as buildings, foundations, and other structures. In order to accomplish such measurement, a strain gauge must be adhesively attached to the object. Any tension or compression on the object leads to changes in the electrical resistance of the sensor.
-% a figure here
-
-% In our prototype, the sensing stage of our prototype consists of a reusable hydrogel-based artificial skin and 9 [120-ohm 2-mm] strain gauge sensors. The artificial skin is attached to the surface of nail and acts as a sensor carrier. As shown in, the sensors are distributed into a 3-by-3 grid configuration. The following sentences explain for such sensor layout. An average of human nail width is approximately [], and the base length of a [2-mm strain gauge is 6.3 mm]. In order to avoid physical contact between any two neighboring sensors causing strain interference, a spaced interval of [2 mm] separates them, resulting in 9 strain gauges in a 3-by-3 grid across the nail surface. The sensor array measures the deformations of multiple individual spots of the artificial skin caused by physical changes on the surface of nail. Thus, our prototype is made possible to become a finger gesture interface for general users.
-
-% Next, the signal conditioning stage includes a Wheatstone bridge, 2 8-to-1 analog switches (MAX4617, Maxim Integrated), a dual digital potentiometer (MCP42X1, Microchip), and an instrumental amplifier (INA122U, Analog Devices). Finally, the processing stage includes an Arduino Nano used to sample the sensors and control chips in the signal conditioning stage. The complete circuit diagram is shown in \autoref{fig:completeCircuitDiagram} and a customized circuit board is shown in.
-
-
-
-% The 9 sensors are read sequentially through the analog switches, so each sensor is electrically connected at a time. Once a sensor is active, the sensor became one of the 4 resistors on the Wheatstone bridge. Since the resistance of each sensor varies under no applied external force, a digital potentiometer in series with the connected sensor is used for calibration. Another digital potentiometer serves the purpose of amplifier gain adjustment. In our prototype, the instrumental amplifier gain is set to be approximately 500. Due to the dynamic response time of the amplifier, a [100-microsecond delay] is added between each reading leading to a sampling rate of 75 Hz for our prototype.
-
 \subsection{Gesture / Posture Recognition}
 We used LIBSVM tool\cite{libsvm}, a popular machine learning open-source library for SVM which is a way to distinguish the pattern by vectors.
 Since the different of the input data sets, we implemented two algorithm specifically for swipe gestures (Motion mode) and finger posture (Motionless mode).
-%which are sequentially and time based data
-% which is a static raw data
 In motionless mode, raw data is directly used for machine learning.
 In motion mode, sequentially and time based data is preprocessed by accumulate difference to the first data when the gesture begin. At the end, the sequentially data is processed to be one feature data.
 For each mode, we scale each feature to the range of -1 to 1 at the end and then train a multi-class SVM classifier with a Radial Basis Function (RBF) kernel.
@@ -288,8 +266,6 @@ We recruited 10 participants (7 male, 3 female) between the ages of 20 and 23(me
 We used the load-cell (Error: $\pm 0.5$ grams) which is the same in our previous pilot study. In this experiment, we instrumented a 9 degree of freedom (9DOF) sensor on user's index finger. Since the strain gauges are very sensitive to the strain, we avoid 9DOF sensor to contact fingernail. And the 9DOF sensor is only used for checking whether user is performing the applicable position and angle for collecting data. The surface we used in our study is medium-density fibreboard.
 
 \vspace{-0.5em}\subsection{Task and Procedure}
-% Participants were asked to reproduce a series of instructed angle \cite{UnderstandingTouch} and force between 0.6N(Newton) to 1.0N.
-
 
 \subsubsection{Motionless Mode}
 \begin{figure}[b!]
@@ -350,15 +326,8 @@ The accuracy due to chance was 20\%. Off-line accuracy was computed using 5-fold
 
 \subsubsection{Motion Mode}
 The result of this study is shown in \autoref{fig:swiperesult}. Off-line accuracy was computed using 10-fold cross-validation of the evaluation data. The mean accuracy across all participants is 93.2\%(SD: $\pm 5.98$\%). Most of the error occurred in swiping down and up, likely because the higher friction caused user performed gestures lightly from surface which caused strain on fingernail does not observable for sensor.
-
-
-
-
 % 此部分數據已確認!!
-
-%Most of the error occurred when user and the caused of the this due to the user use different posture angle for performing the same gesture. 
 % TODO Add data
-% The accuracy of the motion mode can achieved 95\%. Swipe in four direction can reached 99.5\%. The misdetection is shown in Fig???, and the caused of the 
 %\begin{figure}[t!]
 %  \includegraphics[width=1\columnwidth]{figures/fingerposture.png}
 %  \caption{Swipe Gestures in user study}
@@ -366,44 +335,16 @@ The result of this study is shown in \autoref{fig:swiperesult}. Off-line accurac
 %\end{figure}
 
 
-
-
-
-
-
-
-
-
-
-%\begin{figure}[h!]
-%	\begin{subfigure}{0.2\textwidth}
-%	\hspace{-0.5em}\includegraphics[width=1.0\linewidth, height=1.0\linewidth]{figures/swipeconfusing.pdf}  
-%%	\caption{Caption1}
-%%	\label{fig:subim1}
-%	\end{subfigure}
-%	\begin{subfigure}{0.27\textwidth}
-%	\vspace*{1ex}\includegraphics[width=1.05\linewidth, height=0.7\linewidth]{figures/forceAcc.png}
-%%	\caption{Caption 2}
-%%	\label{fig:subim2}
-%	\end{subfigure}
-%%  \includegraphics[width=1\columnwidth]{figures/result.png}
-%  \caption{Motionless mode: Confusing Matrix. Note that \textit{P} stands for pitch and \textit{R} stands for roll}
-%  \label{fig:postureresult}
-%  \vspace*{-3ex}
-%\end{figure}
-% The accuracy of the motionless mode can achieved 85.6\%. The misdetection is shown in Fig???, and the caused of the 
 % 這邊可以說符合一般人的按壓程度
 
 
 \section{Example Application}
 Based on the advantage of \projectName{}, we show two examples using this new interaction technique and are included in video.
-\subsection{Controlling smart devices}
-%we currently put the computing part at wrist as a wristband form factor. The form factor is limited to Arduino Nano board size. This motives us to minimise the computing part such as a ring form factor in future work. For the power consumption, we currently use 120-ohm strain gauges which can be replaced by much higher ohm like 500-ohm.
-\subsection{Short cuts within application}
-%we currently put the computing part at wrist as a wristband form factor. The form factor is limited to Arduino Nano board size. This motives us to minimise the computing part such as a ring form factor in future work. For the power consumption, we currently use 120-ohm strain gauges which can be replaced by much higher ohm like 500-ohm.
-%For the power consumption, we currently use 120-ohm strain gauges which can be replaced by much higher ohm like 500-ohm.
+\subsection{Controlling Smart TV / devices}
+In scenario of using smart TV, we always need to take out the remote for controlling. With \projectName{}, user can focus on the TV program without disturbing and physical effort for taking out remote. User can use couch as input surface to perform simply tap and swipe gestures for switching channels and selecting. More than this, we also implement this on smart watch. Due to small screen of the watch, it is very handy that using swipe gesture on surface as reply message or declining phone call.
 
-%Building on participant feedback from the study, we show two use cases for NailO in Figure 1 and the accompanying video.%1. Remote control: (1) Hands-full scenario: As our fingers are dexterous, they have capability for simple interactions even when both hands are occupied. We developed an ap- plication for electrical engineers to navigate PCB designs on devices while both hands are occupied with soldering. With- out having to break from the soldering process, they can zoom into the on-screen board layout with long press, and navigate by swiping in four directions.%(2) Private and subtle interaction: For scenarios where ges- ture or speech input are socially awkward or privacy intrusive; NailO affords gestures that are implicit and attract minimal attention. An example scenario is simple interactions with devices while in meetings. As it is considered impolite to openly interact with technology in these situations, NailO af- fords basic input to subtly control unexpected prompts from devices, such as rejecting a phone call.
+\subsection{Short cuts within application}
+For touchscreen, most of the devices only can distinguish binary state of touch. Using \projectName{}, user can use different finger posture for enable short cuts like right click on computer. For instance for the file system on smart phone, user can use 45 degree of roll angle to show up a short cut drop-down list to delete, move, and change the file name.
 
 
 \section{Limitation and Future Work}
@@ -415,12 +356,9 @@ Based on the advantage of \projectName{}, we show two examples using this new in
 
 %黏不緊的問題
 % 做到像是筆tracking的部分，偵測角度加上移動方向
-% Hardware: The envisioned form factor of NailO should be comparable to that of a commercialized nail art sticker. To achieve this, we are prototyping a flex PCB version of the circuit with an integrated electrode layer. The flex PCB will conform to the curved surface of the nail. The battery life is the limiting factor for the size and lifetime of the device; we plan to explore wireless powering options, to remove the battery and allow perpetual operation.
-% Input and Output: Beyond including the gestures in Figure 7, with flex PCB we can prototype robust 2 layer electrodes, turning the NailO into a X-Y coordinate touchpad. Along with the addition of an accelerometer, we can expand the in- put space to contact-less gestures. The system can also be- come an output device with the addition of LEDs or vibrators.
 
 \section{Conclusion}
 In this paper, we evaluated using strains from fingernail as a input technique. We developed a nail-mounted device called \projectName{}, which is light and small enough to fit on top of fingernails. Evaluation of the this shows that it can distinguish swipe gestures on surface in high accuracy (93.2\%). Not only for swiping but also the finger postures can identify five different kinds of finger posture at average force level with 82.22\% accuracy. The system is also attractive for a nail-mounted always-available input for surface around which enrich the mobility of touchscreen. We also implemented applications for this technique, including remote controlling smart TV and watches and enabling short cuts on touchscreen device. Our currently plans are to extend this system to all fingers input.
-% In this paper we present NailO, a novel nail-mounted input surface. The miniaturized hardware fits on a fingernail and wirelessly transmits data. We show that the system can de- tect gesture inputs in real-time with high accuracy (>92). Also, we explored interaction scenarios using NailO as a re- mote control in ”hands-full” or privacy-sensitive use cases. NailO also broadens input space when coupled with mobile devices. Further, NailO’s customizable features fuses func- tional wearable electronics and cosmetics, which appealed to study participants. NailO is our first exploration; we plan to augment other cosmetic extensions to continue our study of cosmetic-inspired wearable technologies.
 
 % \subsection{Title and Authors}
 % \subsubsection{Sub-subsections}
