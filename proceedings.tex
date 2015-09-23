@@ -227,9 +227,10 @@ The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDi
 % TODO 怪怪的
 
 \begin{figure}[t!]
-  \includegraphics[width=1\columnwidth]{figures/CompleteDiagram_v4.pdf}
-  \caption{The complete circuit diagram. Note that SG stands for strain gauge. The 24:1 analog multiplexer is practically made up of 3 analog multiplexers.}
+  \hspace{-2em}\includegraphics[width=1.1\columnwidth, height=0.47\linewidth]{figures/CompleteDiagram_v4.pdf}
+  \caption{The complete circuit diagram. Sensing part is consisted with 9 strain gauges. For computing part, we actually used two analog multiplexers and the instrumental amplifier is made up of two amplifiers as well.}
   \label{fig:completeCircuitDiagram}
+  \vspace{-0.8em}
 \end{figure}
 
 Since the requirement of sensing the slightly change of the strain from fingernail, we used two amplifier to magnify the difference on the Wheatstone bridge 4000 times. Finally, Arduino Nano read the final analog value from the amplifier's output. For the digital potentiometer, it is used for adjusting the resistance to let the Wheatstone bridge have no difference on both side during calibration.
@@ -376,7 +377,7 @@ For touchscreen, most of the devices only can distinguish binary state of touch.
 \section{Limitation and Future Work}
 \textit{Firmly sticker on fingernail:} In our evaluation of system, we noticed that the artificial-skin became not sticky enough through time passing and many times of usage. This caused the misclassifications in this situation due to sensing part separate from fingernail.
 
-\textit{Minimise computing part and Power consumption:} As shown in \autoref{fig:PCB}, we currently put the computing part at wrist as a wristband form factor. The form factor is limited to Arduino Nano board size. This motives us to minimise the computing part such as a ring form factor in future work. For the power consumption, we currently use 120-ohm strain gauges which can be replaced by much higher ohm like 500-ohm.
+\textit{Minimise computing part and Power consumption:} As shown in \autoref{fig:main}, we currently put the computing part at wrist as a wristband form factor. The form factor is limited to Arduino Nano board size. This motives us to minimise the computing part such as a ring form factor in future work. For the power consumption, we currently use 120-ohm strain gauges which can be replaced by much higher ohm like 500-ohm.
 
 \textit{Sensing from all fingers:} Mounting the device all over our fingernail is also our future work. Since more finger evolved in this input technique, we can easily enable more functionality such as multi-touch input like pinch and zoom. 
 
