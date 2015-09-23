@@ -133,7 +133,7 @@ These works has proven the advantages of a device mounted on top of fingernails.
   \begin{center}
   \includegraphics[width=1\columnwidth]{figures/BackHand.png}
   \caption{\projectName\ THIS IS A PLACE HOLDER FOR \projectName{}}
-  \label{fig:FIGURE1}
+  \label{fig:main}
   \end{center}
 \end{figure}
 
@@ -146,7 +146,7 @@ Mascaro et al.\cite{Photoplethysmograph} also implements a nail-mounted device f
 In order to explore better sensing technique of nail augmented device, we aims to design a device that achieved following designs. First, it has the ability of sensing simple gestures on surface like swiping and tapping. Second, it has no restrictions of input area which can enable user to perform gestures on surfaces around. Finally, it should comes with light and thin form factor due to the place of fingernail.
 The proposed design will definitely be a novel input device for increasing the mobility of touch screen. It also can be perform gestures anywhere without physical effort.
 
-In this paper, we developed a prototype, \projectName{} (\autoref{fig:FIGURE1}), use a 3$\times$3 array of strain gauges sensor to explore the strains from fingernail as input technique.
+In this paper, we developed a prototype, \projectName{} (\autoref{fig:main}), use a 3$\times$3 array of strain gauges sensor to explore the strains from fingernail as input technique.
 
 % mobility  in enhancing the modality of finger interaction, and expanding the interaction space due to the gesture can be performed everywhere.
 
@@ -218,7 +218,7 @@ And the average of tap pressure measured 0.82N(SD=0.26).
 
 \subsection{Hardware}
 % The device is height 0.8cm and width 1.0cm
-We developed \projectName{} using a 3$\times$3 array of 120-ohm 0.2-mm strain gauges for sensing part (Shown in \autoref{fig:FIGURE1}). Below of the strain gauges, we used a stretchable and flexible artificial-skin to stick sensors on user's fingernail. The size of it only takes 0.9cm$\times$1cm which is smaller than 1 cent of US dollar, and the thickness of it is 1mm. Each of the strain gauge is directly wired to the computing part.
+We developed \projectName{} using a 3$\times$3 array of 120-ohm 0.2-mm strain gauges for sensing part (Shown in \autoref{fig:main}). Below of the strain gauges, we used a stretchable and flexible artificial-skin to stick sensors on user's fingernail. The size of it only takes 0.9cm$\times$1cm which is smaller than 1 cent of US dollar, and the thickness of it is 1mm. Each of the strain gauge is directly wired to the computing part.
 The computing hardware is consisted with an Arduino Nano board and two 8-to-1 analog switches(MAX4617, Maxim Integrated), a dual digital potentiometer (AD5231, Analog Devices), and two instrumental amplifiers (INA133 and INA122U, Analog Devices). 
 % hardware confirmed!!
 
@@ -227,18 +227,12 @@ The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDi
 % TODO 怪怪的
 
 \begin{figure}[t!]
-  \includegraphics[width=1\columnwidth]{figures/CompleteDiagram_v3.pdf}
+  \includegraphics[width=1\columnwidth]{figures/CompleteDiagram_v4.pdf}
   \caption{The complete circuit diagram. Note that SG stands for strain gauge. The 24:1 analog multiplexer is practically made up of 3 analog multiplexers.}
   \label{fig:completeCircuitDiagram}
 \end{figure}
 
 Since the requirement of sensing the slightly change of the strain from fingernail, we used two amplifier to magnify the difference on the Wheatstone bridge 4000 times. Finally, Arduino Nano read the final analog value from the amplifier's output. For the digital potentiometer, it is used for adjusting the resistance to let the Wheatstone bridge have no difference on both side during calibration.
-
-\begin{figure}[t!]
-  \includegraphics[width=1\columnwidth]{figures/PCB.png}
-  \caption{The complete circuit diagram. Note that SG stands for strain gauge. The 24:1 analog multiplexer is practically made up of 3 analog multiplexers.}
-  \label{fig:PCB}
-\end{figure}
 
 
 \subsection{Gesture / Posture Recognition}
@@ -247,27 +241,33 @@ Since the different of the input data sets, we implemented two algorithm specifi
 In motion mode, sequentially and time based data is preprocessed by accumulate difference to the first data when the gesture begin. At the end, the sequentially data is processed to be one feature data.
 In motionless mode, raw data is directly used for machine learning.
 For each mode, we scale each feature to the range of -1 to 1 at the end and then train a multi-class SVM classifier with a Radial Basis Function (RBF) kernel.
-\begin{figure*}[bp]
- \begin{center}
-  \setcounter{figure}{5}
-  \hspace{-1em}\includegraphics[width=2\columnwidth]{figures/mixedconfusingMatrix.pdf}
-  \caption{
-    Motionless mode: Confusing Matrix for each pressure level. Note that \textit{N} stands for Newton, \textit{P} stands for pitch and \textit{R} stands for roll.
-  }
-  \vspace{-1em}\label{fig:postureMatrix}
-  \end{center}
-\end{figure*}
+%\begin{figure*}[bp]
+% \begin{center}
+%  \setcounter{figure}{5}
+%  \hspace{-1em}\includegraphics[width=2\columnwidth]{figures/mixedconfusingMatrix.pdf}
+%  \caption{
+%    Motionless mode: Confusing Matrix for each pressure level. Note that \textit{N} stands for Newton, \textit{P} stands for pitch and \textit{R} stands for roll.
+%  }
+%  \vspace{-1em}\label{fig:postureMatrix}
+%  \end{center}
+%\end{figure*}
 \section{System Evaluation}
 % TODO Figs for swipe gesture
 The goal of the study is to explore: (1) The system is capable for classifying different kinds of swipe gestures when user perform gesture on surface. (2) Finger posture angles can be identified at user daily usage pressure level. (3) The device is able to sense a force touch. 
 
-\vspace{-0.5em}\subsection{Participants}
+\subsection{Participants}
 % TODO check mean age
 We recruited 10 participants (7 male, 3 female) between the ages of 20 and 23(mean 21.3). All participants are right-handed and drew with their right index fingers on the surface. Each participants received \$5 after one hour experiment.
-\vspace{-0.5em}\subsection{Apparatus} %設備！
+\subsection{Apparatus} %設備！
 We used the load-cell (Error: $\pm 0.5$ grams) which is the same in our previous pilot study. In this experiment, we instrumented a 9 degree of freedom (9DOF) sensor on user's index finger. Since the strain gauges are very sensitive to the strain, we avoid 9DOF sensor to contact fingernail. And the 9DOF sensor is only used for checking whether user is performing the applicable position and angle for collecting data. The surface we used in our study is medium-density fibreboard.
 
-\vspace{-0.5em}\subsection{Task and Procedure}
+\begin{figure}[t!]
+  \includegraphics[width=1\columnwidth]{figures/PCB.png}
+  \caption{The apparatus in our user study. At the surface, we put a load-cell sensor below. For each user, we put a 9DOF sensor on finger and our \projectName{} device on fingernail.}
+  \label{fig:apparatus}
+\end{figure}
+
+\subsection{Task and Procedure}
 
 \subsubsection{Motion Mode}
 We chose four swipe direction (up, down, left, right) and tap for this study.
@@ -283,21 +283,26 @@ The forces are chosen from our pilot user study, following as average force (0.8
   \includegraphics[width=1\columnwidth]{figures/fingerposture.png}
   \caption{Motionless posture sets: (a) pitch 15 degree, (b) pitch 45 degree, (c) pitch 15 degree and roll 45 degree, (d) pitch 45 degree and roll 45 degree}
   \label{fig:fingerposture}
+  	\vspace*{-2ex}
 \end{figure}
 
 
-\vspace{-0.5em}
 \subsection{Results}
 %\textit{Accuracy:} is defined as the number of correctly classified samples divided by the total number of samples.
-\begin{figure}[bp]
-	\setcounter{figure}{4}
+
+
+
+\subsubsection{Motion Mode}
+The result of this study is shown in \autoref{fig:swiperesult}. Off-line accuracy was computed using 10-fold cross-validation of the evaluation data. The mean accuracy across all participants is 93.2\%(SD: $\pm 5.98$\%). Most of the error occurred in swiping down and up, likely because the higher friction caused user performed gestures lightly from surface which caused strain on fingernail does not observable for sensor.
+
+\begin{figure}[b!]
 	\begin{subfigure}{0.2\textwidth}
 	\hspace{-0.5em}\includegraphics[width=1.0\linewidth, height=1.0\linewidth]{figures/swipeconfusing.pdf} 
 %	\caption{Caption1}
 %	\label{fig:subim1}
 	\end{subfigure}
 	\begin{subfigure}{0.26\textwidth}
-	\vspace*{1ex}\includegraphics[width=1.0\linewidth, height=0.7\linewidth]{figures/swipeAcc.png}
+	\vspace*{1ex}\includegraphics[width=1.0\linewidth, height=0.8\linewidth]{figures/swipeAcc.pdf}
 
 %	\caption{Caption 2}
 %	\label{fig:subim2}
@@ -308,14 +313,11 @@ The forces are chosen from our pilot user study, following as average force (0.8
 
 
 %  \includegraphics[width=1\columnwidth]{figures/swipeconfusing.pdf}
-  \caption{Motion mode: Confusing Matrix and Accuracy for four direction swipings and tapping. }
+  \caption{Motion mode: Confusing Matrix and Accuracy for four direction swiping and tapping. }
   \label{fig:swiperesult}
   \vspace*{-2ex}
 \end{figure}
 
-
-\subsubsection{Motion Mode}
-The result of this study is shown in \autoref{fig:swiperesult}. Off-line accuracy was computed using 10-fold cross-validation of the evaluation data. The mean accuracy across all participants is 93.2\%(SD: $\pm 5.98$\%). Most of the error occurred in swiping down and up, likely because the higher friction caused user performed gestures lightly from surface which caused strain on fingernail does not observable for sensor.
 % 此部分數據已確認!!
 % TODO Add data
 %\begin{figure}[t!]
@@ -327,10 +329,37 @@ The result of this study is shown in \autoref{fig:swiperesult}. Off-line accurac
 
 % 這邊可以說符合一般人的按壓程度
 
+\begin{figure}[hb!]
+	\begin{subfigure}{0.2\textwidth}
+	\hspace{-0.62em}\includegraphics[width=1.01\linewidth, height=1.0\linewidth]{figures/overallConfusingMatrix.pdf} 
+%	\caption{Caption1}
+%	\label{fig:subim1}
+	\end{subfigure}
+	\begin{subfigure}{0.26\textwidth}
+	\vspace*{1ex}\includegraphics[width=1.0\linewidth, height=0.7\linewidth]{figures/postureAcc.pdf}
+
+%	\caption{Caption 2}
+%	\label{fig:subim2}
+	\end{subfigure}
+	 
+%	\caption{Caption for this figure with two images}
+%	\label{fig:image2}
+
+
+%  \includegraphics[width=1\columnwidth]{figures/swipeconfusing.pdf}
+  \caption{Motionless mode: Mixed-force confusing Matrix and Accuracy for each level of pressure.}
+  \label{fig:postureResult}
+  \vspace*{-2ex}
+\end{figure}
+
 \subsubsection{Motionless Mode}
 % TODO 這邊要改
 % In each trial, after the participant indicated his readiness, one of the drawings in Figure 3 appeared on a Keynote slide. The participant was asked an eyes-free input, that is, not to look at his left palm when sketching on it by right index finger; also, the starting point and stroke order of each drawing were provided. The trial was completed when the participant finished the sketch and dropped his right arm to get ready for the next trial.%During the trial, the participant needed to wear a partial blind- fold modified from a sanitary mask to completely occlude the users view of his hand as shown in Figure 2.
-The accuracy due to chance was 20\%. Off-line accuracy was computed using 5-fold cross-validation of the evaluation data. The mean accuracy for mixed all force data together across all participants was 76.9\% (SD: $\pm$13.17\%). The confusing matrix for each force level is shown in \autoref{fig:postureMatrix}, which shows that the higher pressure level the better accuracy gets. So if we drop 0.4N and 0.6N data, the accuracy can reach 82.44\% (SD: $\pm$12.74\%). Note that most of the error happened in the angle of pitch 45 degree with roll 45 degree. We think it is due to the user sometimes perform postures directly using fingernail instead of fingertip to touch the surface when the roll angle is higher. This caused strain gauges different value for each trail which raise this error classification. For sensing force touch, we used 5-fold cross-validation to evaluate. However, it shows that it can only distinguish 0.4N and 1.2N pressure with 70\% (SD: $\pm$12.74\%) accuracy.
+The accuracy due to chance was 20\%. Off-line accuracy was computed using 5-fold cross-validation of the evaluation data. The mean accuracy for mixed all force data together across all participants was 76.9\% (SD: $\pm$13.17\%). The confusing matrix for each force level is shown in \autoref{fig:postureResult}, which shows that the higher pressure level the better accuracy gets. So if we drop 0.4N and 0.6N data, the accuracy can reach 82.44\% (SD: $\pm$12.74\%). Note that most of the error happened in the angle of pitch 45 degree with roll 45 degree. We think it is due to the user sometimes perform postures directly using fingernail instead of fingertip to touch the surface when the roll angle is higher. This caused strain gauges different value for each trail which raise this error classification. For sensing force touch, we used 5-fold cross-validation to evaluate. However, it shows that it can only distinguish 0.4N and 1.2N pressure with 70\% (SD: $\pm$12.74\%) accuracy.
+
+
+
+
 %and the caused of the this due to the user sometimes perform postures directly using nail to touch the surface which caused strain gauges different value. We also run 10-fold cross-validation for our pressure value. It turns out that the device cannot distinguish the difference of slightly changes of pressure. The device only can distinguish the pressure level of difference with 90\% accuracy when it comes to 0.4N with 1.2N.
 % TODO 此部分數據尚未確認!!
 
