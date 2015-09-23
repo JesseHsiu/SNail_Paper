@@ -98,7 +98,8 @@
 \maketitle
 \begin{abstract}
 We present \projectName{}, a nail augmented device that sense user's fingernail contour and bend when force is applied on surface. By using 3$\times$3 array of 0.2mm strain gauges, \projectName{} is small enough to fit on fingernail, and it is flexible and stretchable.
-We evaluate this interface in motion and motionless mode. The system can distinguish swipe gestures with high accuracy(93.2\%). For motionless mode, it can achieved 85.6\% accuracy for classifying with different kinds of finger posture.
+We evaluate this interface in motion and motionless mode. The system can distinguish swipe gestures with high accuracy (93.2\%). For motionless mode, it can achieve 85.6\% accuracy for classifying with different kinds of finger posture.
+% TODO finger posture
 Since the device is always available input, it allows user to perform swipe gestures on surfaces around or touch postures on touch screen devices to enable different kinds of application usage.
 We also show some examples applications such as quickly swipe on surfaces around to control smart TV or touching on touchscreen devices to enable different application short cuts.
 \end{abstract}
@@ -198,8 +199,8 @@ In summary, the main contributions of this paper are as follows:
 % TapSense\cite{TapSense} use a acoustic way to identify which gesture is preformed by the users. They capture the sound when our fingers strike the screen, and use that sound pattern to recognize the gesture. This approach doesn't require user to wear anything, but will need a microphone which already built in smart phones. Scratch input use the sound when fingernail is dragged over the surface of a textured material as finger input surface. Six Scratch Input gestures at about 90\% accuracy with less than five minutes of training and on wide variety of surfaces. However, the interface table will not always exist.
 
 \section{Prototype Design}
-In order to design a nail augmented device to sense a touch or gesture on surfaces, we have few mainly requirements. First of all, the device must be small enough to fit within fingernail. Second, it should have ability of sensing slightly changes of the strain from fingernail. Last but not least, it has to be reusable and easy for installation and removing. Based on above of requirements, we derived that using a 2D array of 0.2mm strain gauges is the appropriate solution for this prototype.
-\subsection{Pilot Study : Human Behaviour and Size of Fingernail}
+In order to design a nail augmented device to sense a touch or gesture on surfaces, we have few mainly requirements. First of all, the device must be small enough to fit within fingernail. Second, it should have ability of sensing slightly changes of the strain from fingernail. Last but not least, it has to be reusable and easy for installation and removing. Based on above of requirements, we derived that using a 2D array of 0.2mm strain gauges is the appropriate solution for this prototype. In order to fit on every users' fingernail, we conducted a pilot study to collect the average size of fingernail.
+\subsection{Pilot Study : Size of Fingernail and Human Behaviour}
 Before developing device, we recruited 10 participants (7 male, 3 female) from ages 20 and 24 (mean 21.2) to find average width and height of fingernail. We also requested user to perform tap gesture on electronic load-cell to measure how much pressure applied on the surface in daily life for investigating the ability of strain gauges.
 The result of this pilot study, fingernail width is 1.145cm(SD=0.14) and height is 1.21cm(SD=0.17). 
 And the average of tap pressure measured 0.82N(SD=0.26).
@@ -223,6 +224,7 @@ The computing hardware is consisted with an Arduino Nano board and two 8-to-1 an
 
 
 The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDiagram}. First, the multiplexers are sequentially selected to connect one of the strain gauges. Once one of the strain sensors is selected, it becomes one of the 4 resistors on the Wheatstone bridge. When the forces apply, the strain of fingernail let the sensor slight changed which caused the ohm value of strain gauges lower or higher. Due to the changes of ohm value, one side of the voltage in Wheatstone bridge also changed.
+% TODO 怪怪的
 
 \begin{figure}[t!]
   \includegraphics[width=1\columnwidth]{figures/CompleteDiagram_v3.pdf}
@@ -242,22 +244,22 @@ Since the requirement of sensing the slightly change of the strain from fingerna
 \subsection{Gesture / Posture Recognition}
 We used LIBSVM tool\cite{libsvm}, a popular machine learning open-source library for SVM which is a way to distinguish the pattern by vectors.
 Since the different of the input data sets, we implemented two algorithm specifically for swipe gestures (Motion mode) and finger posture (Motionless mode).
-In motionless mode, raw data is directly used for machine learning.
 In motion mode, sequentially and time based data is preprocessed by accumulate difference to the first data when the gesture begin. At the end, the sequentially data is processed to be one feature data.
+In motionless mode, raw data is directly used for machine learning.
 For each mode, we scale each feature to the range of -1 to 1 at the end and then train a multi-class SVM classifier with a Radial Basis Function (RBF) kernel.
 \begin{figure*}[bp]
  \begin{center}
-  \setcounter{figure}{4}
+  \setcounter{figure}{5}
   \hspace{-1em}\includegraphics[width=2\columnwidth]{figures/mixedconfusingMatrix.pdf}
   \caption{
     Motionless mode: Confusing Matrix for each pressure level. Note that \textit{N} stands for Newton, \textit{P} stands for pitch and \textit{R} stands for roll.
   }
-  \vspace{-3em}\label{fig:postureMatrix}
+  \vspace{-1em}\label{fig:postureMatrix}
   \end{center}
 \end{figure*}
 \section{System Evaluation}
 % TODO Figs for swipe gesture
-The goal of the study is to explore: (1) Finger posture angles can be identified at user daily usage pressure level. (2) The device is able to sense a force touch. (3) The system is capable for classifying different kinds of swipe gestures when user perform gesture on surface. 
+The goal of the study is to explore: (1) The system is capable for classifying different kinds of swipe gestures when user perform gesture on surface. (2) Finger posture angles can be identified at user daily usage pressure level. (3) The device is able to sense a force touch. 
 
 \vspace{-0.5em}\subsection{Participants}
 % TODO check mean age
@@ -267,8 +269,16 @@ We used the load-cell (Error: $\pm 0.5$ grams) which is the same in our previous
 
 \vspace{-0.5em}\subsection{Task and Procedure}
 
+\subsubsection{Motion Mode}
+We chose four swipe direction (up, down, left, right) and tap for this study.
+% as shown in \autoref{fig:swipegestures}.
+Users were requested to perform gestures shown on computer screen in front and press space key on keyboard at the beginning and at the end of the gesture. On the desk, we draw instructions of swiping to insure swipe direction and distance is the same for users. Each direction are randomly selected to show on screen, and collected with 10 sets of sequentially data which has total 80 trials for each user. Before the study, a calibration is needed for the first time wearing, and no calibration within this study.
+
 \subsubsection{Motionless Mode}
-\begin{figure}[b!]
+In this mode, we tried to varies of finger postures with different pressure levels.
+For each trail, the participants were instructed to adjust their finger pitch and roll angle which are partially selected from \cite{UnderstandingTouch}. We only chose the angles which are easy to identify by users, and gesture set is shown in \autoref{fig:fingerposture}.
+The forces are chosen from our pilot user study, following as average force (0.8N), one SD forces (0.6N, 1.0N), two SD forces (0.4N, 1.2N). The participants were asked to straighten finger during all experiment. In front of the user, there is also a screen showing current (sensing from 9DOF and load-cell sensor) and instructed angle and force. Before each trail, participants were requested to return the initial position. When participants adjust finger to the correct posture and perform correct pressure (tolerance: $\pm 5$grams) on the surface, we start to collect data. Once posture or pressure is inapplicable during the study, recorder will automatically skip the data. For each user, we collect 5 postures with 5 forces for 5 times, which is total 125 trials.
+\begin{figure}[t!]
 \setcounter{figure}{3}
   \includegraphics[width=1\columnwidth]{figures/fingerposture.png}
   \caption{Motionless posture sets: (a) pitch 15 degree, (b) pitch 45 degree, (c) pitch 15 degree and roll 45 degree, (d) pitch 45 degree and roll 45 degree}
@@ -276,32 +286,11 @@ We used the load-cell (Error: $\pm 0.5$ grams) which is the same in our previous
 \end{figure}
 
 
-
-In this mode, we tried to varies of finger postures with different pressure levels.
-For each trail, the participants were instructed to adjust their finger pitch and roll angle which are partially selected from \cite{UnderstandingTouch}. We only chose the angles which are easy to identify by users, and gesture set is shown in \autoref{fig:fingerposture}.
-The forces are chosen from our pilot user study, following as average force (0.8N), one SD forces (0.6N, 1.0N), two SD forces (0.4N, 1.2N). The participants were asked to straighten finger during all experiment. In front of the user, there is also a screen showing current (sensing from 9DOF and load-cell sensor) and instructed angle and force. Before each trail, participants were requested to return the initial position. When participants adjust finger to the correct posture and perform correct pressure (tolerance: $\pm 5$grams) on the surface, we start to collect data. Once posture or pressure is inapplicable during the study, recorder will automatically skip the data. For each user, we collect 5 postures with 5 forces for 5 times, which is total 125 trials.
-
-
-
-
-\subsubsection{Motion Mode}
-We chose four swipe direction (up, down, left, right) and tap for this study.
-% as shown in \autoref{fig:swipegestures}.
-Users were requested to perform gestures shown on computer screen in front and press space key on keyboard at the beginning and at the end of the gesture. On the desk, we draw instructions of swiping to insure swipe direction and distance is the same for users. Each direction are randomly selected to show on screen, and collected with 10 sets of sequentially data which has total 80 trials for each user. Before the study, a calibration is needed for the first time wearing, and no calibration within this study.
-
 \vspace{-0.5em}
 \subsection{Results}
 %\textit{Accuracy:} is defined as the number of correctly classified samples divided by the total number of samples.
-\subsubsection{Motionless Mode}
-% TODO 這邊要改
-% In each trial, after the participant indicated his readiness, one of the drawings in Figure 3 appeared on a Keynote slide. The participant was asked an eyes-free input, that is, not to look at his left palm when sketching on it by right index finger; also, the starting point and stroke order of each drawing were provided. The trial was completed when the participant finished the sketch and dropped his right arm to get ready for the next trial.%During the trial, the participant needed to wear a partial blind- fold modified from a sanitary mask to completely occlude the users view of his hand as shown in Figure 2.
-The accuracy due to chance was 20\%. Off-line accuracy was computed using 5-fold cross-validation of the evaluation data. The mean accuracy for mixed all force data together across all participants was 76.9\% (SD: $\pm$13.17\%). The confusing matrix for each force level is shown in \autoref{fig:postureMatrix}, which shows that the higher pressure level the better accuracy gets. So if we drop 0.4N and 0.6N data, the accuracy can reach 82.44\% (SD: $\pm$12.74\%). Note that most of the error happened in the angle of pitch 45 degree with roll 45 degree. We think it is due to the user sometimes perform postures directly using fingernail instead of fingertip to touch the surface when the roll angle is higher. This caused strain gauges different value for each trail which raise this error classification. For sensing force touch, we used 5-fold cross-validation to evaluate. However, it shows that it can only distinguish 0.4N and 1.2N pressure with 70\% (SD: $\pm$12.74\%) accuracy.
-%and the caused of the this due to the user sometimes perform postures directly using nail to touch the surface which caused strain gauges different value. We also run 10-fold cross-validation for our pressure value. It turns out that the device cannot distinguish the difference of slightly changes of pressure. The device only can distinguish the pressure level of difference with 90\% accuracy when it comes to 0.4N with 1.2N.
-% TODO 此部分數據尚未確認!!
-
-
-\begin{figure}[t!]
-	\setcounter{figure}{5}
+\begin{figure}[bp]
+	\setcounter{figure}{4}
 	\begin{subfigure}{0.2\textwidth}
 	\hspace{-0.5em}\includegraphics[width=1.0\linewidth, height=1.0\linewidth]{figures/swipeconfusing.pdf} 
 %	\caption{Caption1}
@@ -324,6 +313,7 @@ The accuracy due to chance was 20\%. Off-line accuracy was computed using 5-fold
   \vspace*{-2ex}
 \end{figure}
 
+
 \subsubsection{Motion Mode}
 The result of this study is shown in \autoref{fig:swiperesult}. Off-line accuracy was computed using 10-fold cross-validation of the evaluation data. The mean accuracy across all participants is 93.2\%(SD: $\pm 5.98$\%). Most of the error occurred in swiping down and up, likely because the higher friction caused user performed gestures lightly from surface which caused strain on fingernail does not observable for sensor.
 % 此部分數據已確認!!
@@ -337,10 +327,17 @@ The result of this study is shown in \autoref{fig:swiperesult}. Off-line accurac
 
 % 這邊可以說符合一般人的按壓程度
 
+\subsubsection{Motionless Mode}
+% TODO 這邊要改
+% In each trial, after the participant indicated his readiness, one of the drawings in Figure 3 appeared on a Keynote slide. The participant was asked an eyes-free input, that is, not to look at his left palm when sketching on it by right index finger; also, the starting point and stroke order of each drawing were provided. The trial was completed when the participant finished the sketch and dropped his right arm to get ready for the next trial.%During the trial, the participant needed to wear a partial blind- fold modified from a sanitary mask to completely occlude the users view of his hand as shown in Figure 2.
+The accuracy due to chance was 20\%. Off-line accuracy was computed using 5-fold cross-validation of the evaluation data. The mean accuracy for mixed all force data together across all participants was 76.9\% (SD: $\pm$13.17\%). The confusing matrix for each force level is shown in \autoref{fig:postureMatrix}, which shows that the higher pressure level the better accuracy gets. So if we drop 0.4N and 0.6N data, the accuracy can reach 82.44\% (SD: $\pm$12.74\%). Note that most of the error happened in the angle of pitch 45 degree with roll 45 degree. We think it is due to the user sometimes perform postures directly using fingernail instead of fingertip to touch the surface when the roll angle is higher. This caused strain gauges different value for each trail which raise this error classification. For sensing force touch, we used 5-fold cross-validation to evaluate. However, it shows that it can only distinguish 0.4N and 1.2N pressure with 70\% (SD: $\pm$12.74\%) accuracy.
+%and the caused of the this due to the user sometimes perform postures directly using nail to touch the surface which caused strain gauges different value. We also run 10-fold cross-validation for our pressure value. It turns out that the device cannot distinguish the difference of slightly changes of pressure. The device only can distinguish the pressure level of difference with 90\% accuracy when it comes to 0.4N with 1.2N.
+% TODO 此部分數據尚未確認!!
+
 
 \section{Example Application}
 Based on the advantage of \projectName{}, we show two examples using this new interaction technique and are included in video.
-\subsection{Controlling Smart TV / devices}
+\subsection{Controlling Smart TV / Devices}
 In scenario of using smart TV, we always need to take out the remote for controlling. With \projectName{}, user can focus on the TV program without disturbing and physical effort for taking out remote. User can use couch as input surface to perform simply tap and swipe gestures for switching channels and selecting. More than this, we also implement this on smart watch. Due to small screen of the watch, it is very handy that using swipe gesture on surface as reply message or declining phone call.
 
 \subsection{Short cuts within application}
