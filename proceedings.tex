@@ -99,7 +99,7 @@
 \maketitle
 \begin{abstract}
 We present \projectName{}, a nail augmented device that senses user's fingernail contour and bend when force is applied on a surface. Using 3$\times$3 array of 0.2-mm strain gauges, \projectName{} is small enough to fit on fingernails, and at the same time, flexible and stretchable.
-We evaluate this interface in motion and motionless mode. The system can distinguish swipe gestures with high accuracy (93.2\%). For motionless mode, it can achieve 82.4\% accuracy for classifying different kinds of finger postures.
+We evaluate this interface in motionless and motion mode. For motionless mode, it can achieve 82.4\% accuracy for classifying different kinds of finger postures. The system can distinguish swipe gestures with high accuracy (93.2\%).
 Since the device is always available, it allows users to perform swipe gestures on surfaces around or touch postures on touch screen devices to enable a variation of application usage.
 We also show some example scenarios of using this technique such as smart TV and smart watches for extending input area and dimension.
 %applications such as quick swiping on surfaces around to control smart TV's or touching on touchscreen devices to enable different application short cuts.
@@ -202,7 +202,7 @@ Few main design requirements were needed. First of all, the device must be small
 
 \subsection{Pilot Study : Size of Fingernail and Human Behaviour}
 We recruited 10 participants (7 male, 3 female) from ages 20 and 24 (mean 21) to find an average width and height of fingernail. We also requested users to perform tap gesture on electronic load-cell to measure how much pressure is applied on a surface to investigate the ability of strain gauges.
-The pilot study showed, fingernail width is 1.145cm (SD=0.14) and height is 1.21cm (SD=0.17). 
+The pilot study showed, fingernail width is 1.14cm (SD=0.14) and height is 1.21cm (SD=0.17). 
 The average of tap pressure measured 0.82N (SD=0.26).
 % The changes of color on fingernail are obvious when we press pressure changes, 
 
@@ -218,8 +218,7 @@ The average of tap pressure measured 0.82N (SD=0.26).
 
 % TODO pilot前綴？
 \subsection{Hardware}
-% The device is height 0.8cm and width 1.0cm
-Based on pilot study, we developed \projectName{} using a 3$\times$3 array of 120-ohm 0.2-mm strain gauges for sensing part (Shown in \autoref{fig:main}). Below the strain gauges, we used a stretchable and flexible artificial-skin to adhere sensors onto user's fingernail. The size of it only takes 0.9cm$\times$1cm which is smaller than 1 US cent, and the thickness of it is 1mm. Each of the strain gauge is directly wired to the computing part.
+Based on pilot study, we developed \projectName{} using a 3$\times$3 array of 120-ohm 0.2-mm strain gauges for sensing part (Shown in \autoref{fig:main}). Below the strain gauges, we used a stretchable and flexible artificial-skin to adhere sensors onto user's fingernail. The size of it only takes 1.0cm$\times$1.1cm which is smaller than 1 US cent, and the thickness of it is 1mm. Each of the strain gauge is directly wired to the computing part.
 The computing hardware is consisted of an Arduino Nano board and two 8-to-1 analog switches(MAX4617, Maxim Integrated), a dual digital potentiometer (AD5231, Analog Devices), and two instrumentation amplifiers (AD623, Analog Devices and INA122U, Texas Instruments).
 % hardware confirmed!!
 
