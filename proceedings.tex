@@ -112,9 +112,9 @@ We also show some example scenarios of using this technique such as smart TV and
 
 
 \section{Introduction}
-Recent works have seen new proposals for nail augmented devices in body-attached computing. Fingernails have been widely adopted due to its characteristic of lacking perception, being non-obstructive and the most promising place for easy installation and removal\cite{MagNail}. Moreover, nail art has been proposed in previous works\cite{NailDisplay,NailO}.
+Recent works have seen new proposals for nail augmented devices in body-attached computing. Fingernails have been adopted due to its characteristic of lacking perception, being non-obstructive and the most promising place for easy installation and removal\cite{MagNail}. Moreover, nail art has been proposed in previous works\cite{NailDisplay,NailO}.
 We believe using nail as a mounting location will become more popular in the future.
-% TODO delete this sentence. but need for another? -- NAILDISPLAY HAS THIS SENTENSE
+% TODO delete this sentence. but need for another? -- NAILDISPLAY HAS THIS SENTENCE
 
 % These devices are designed to be non-obstructive, small, lightweight and no disturbing in daily life. 
 
@@ -127,7 +127,7 @@ We believe using nail as a mounting location will become more popular in the fut
 % 在結尾開始講在nail上面做input的work
 Prior works on fingernail mounted devices develop schemes to  provide visual and tactile feedbacks.
 NailDisplay\cite{NailDisplay} mounts a visual display on top of fingernail to show the content underneath the fingertip. Ando et al.\cite{NailTDisplay} proposes to put a small voice coil to control the tactile feedback from surface by changing waveforms. More than that, FingerSight\cite{FingerSight} implements a device consisting of a camera to extract environmental information. Previous research also demonstrates using nail-mounted device to enrich input area. NailO\cite{NailO} proposes a capacitive sensor grid on top of the fingernail to sense swipe and tap gestures.
-uTrack\cite{uTrack} and FingerPad\cite{FingerPad} places small magnet on the fingertip, and uses a magnetic field to track finger movements. TouchSense\cite{TouchSense} uses 3-axis accelerometer to detect finger postures for switching different modes of input.
+uTrack\cite{uTrack} and FingerPad\cite{FingerPad} place small magnet on the fingertip, and use a magnetic field to track finger movements. TouchSense\cite{TouchSense} uses 3-axis accelerometer to detect finger postures for switching different modes of input.
 These works have proven the advantages of a device mounted on top of fingernails, yet have not explored the characteristics of a fingernail itself as a signal source.
 
 \begin{figure}
@@ -147,6 +147,7 @@ In order to explore better sensing technique of nail augmentation, we aim to des
 The proposed design will be a novel input device for increasing the mobility of touch screen.
 
 In this paper, we developed a prototype, \projectName{} shown in \autoref{fig:main}(b), utilizing a grid of strain sensors to explore the technique of using strains from fingernail as input as sensing part. For computing part, a shield for Arduino Nano board shown in \autoref{fig:main}(c) was built and worn on the wrist by user.
+% TODO check this before submit, especially the c or b
 
 % mobility  in enhancing the modality of finger interaction, and expanding the interaction space due to the gesture can be performed everywhere.
 
@@ -220,12 +221,18 @@ Few main design requirements were needed. First of all, the device must be small
 % \end{figure}
 
 \subsection{Hardware}
-Based on pilot study, we developed \projectName{} using a 3$\times$3 array of 120-ohm 0.2-mm strain gauges for sensing part (Shown in \autoref{fig:main}). Below the strain gauges, we used a stretchable and flexible artificial-skin to adhere sensors onto user's fingernail. The size of it only takes 1.0cm$\times$1.1cm which is smaller than 1 US cent, and the thickness of it is 1mm. Each of the strain gauge is directly wired to the computing part.
-The computing hardware is consisted of an Arduino Nano board, two 8-to-1 analog switches(MAX4617, Maxim Integrated), a dual digital potentiometer (AD5231, Analog Devices), and two instrumentation amplifiers (AD623, Analog Devices and INA122U, Texas Instruments).
+Based on our pilot study, we developed \projectName{} using a 3$\times$3 array of 120-ohm 0.2-mm strain gauges for sensing part (Shown in \autoref{fig:main}(b)). 
+% TODO check this before submission
+Below the strain gauges, we used a stretchable and flexible artificial-skin to adhere sensors onto user's fingernail. The size of it only takes 1.0cm$\times$1.1cm which is smaller than 1 US cent, and the thickness of it is 1mm. Each of the strain gauge is directly wired to the computing part.
+The computing hardware consists of an Arduino Nano board, two 8-to-1 analog switches(MAX4617, Maxim Integrated), a dual digital potentiometer (AD5231, Analog Devices), and two instrumentation amplifiers (AD623, Analog Devices and INA122U, Texas Instruments).
+
+
+
 % hardware confirmed!!
 
 
 The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDiagram}. First, the multiplexers are sequentially selected to connect one of the strain gauges. Upon gauge selection, it becomes one of the four resistors on the Wheatstone bridge. When the forces apply on fingertip, the strain of fingernail causes slight bend or contour which causes the ohm value to be lower or higher. Due to the changes of ohm value, one side of the voltage in Wheatstone bridge also changed. This difference becomes our sensing signal input.
+% TODO 這裏似乎怪怪的？
 
 \begin{figure}[t!]
   \hspace{-2em}\includegraphics[width=1.1\columnwidth, height=0.47\linewidth]{figures/CompleteDiagram_v4.pdf}
