@@ -99,7 +99,7 @@
 \maketitle
 \begin{abstract}
 We present \projectName{}, a nail augmented device that senses user's fingernail contour and bend when force is applied on a surface. Using 3$\times$3 array of 0.2-mm strain gauges, \projectName{} is small enough to fit on fingernails, and at the same time, flexible and stretchable.
-We evaluate this interface in motionless and motion mode. For motionless mode, it can achieve 82.4\% accuracy for classifying different kinds of finger postures. The system can distinguish swipe gestures with high accuracy (93.2\%).
+We evaluate this interface in motionless and motion mode. For motionless mode, it can achieve 82.4\% accuracy for classifying different kinds of finger postures and distinguish motion swipe gestures with high accuracy (93.2\%).
 Since the device is always available, it allows users to perform swipe gestures on surfaces around or touch postures on touch screen devices to enable a variation of application usage.
 We also show some example scenarios of using this technique such as smart TV and smart watches for extending input area and dimension.
 %applications such as quick swiping on surfaces around to control smart TV's or touching on touchscreen devices to enable different application short cuts.
@@ -201,7 +201,7 @@ In summary, the main contributions of this paper are as follows: (1) We develope
 
 
 \section{Prototype Design}
-Few main design requirements were needed. First of all, the device must be small enough to fit within fingernail. Second, it should have ability of sensing slightly changes of the strain from fingernail. Last but not least, it has to be reusable and easy for installation and removing. Thus, we concluded that using a 2D array of strain gauges is the proper solution for this prototype. To derive a general fitting, we conducted a 10 users (7 male, 3 female) pilot study to collect the average size of fingernail. The pilot study showed, fingernail width is 1.14cm (SD=0.14) and height is 1.21cm (SD=0.17).
+Few main design requirements were needed. First of all, the device must be small enough to fit within fingernail. Second, it should have the ability to sense slight changes of the strain from fingernail. Last but not least, it has to be reusable and easy for installation and removing. Thus, we concluded that using a 2D array of strain gauges is the proper solution for this prototype. To derive a general fitting, we conducted a 10 users (7 male, 3 female) pilot study to collect the average size of fingernail. The pilot study showed, fingernail width is 1.14cm (SD=0.14) and height is 1.21cm (SD=0.17).
 
 %\subsection{Pilot Study : Size of Fingernail and Human Behaviour}
 %We recruited 10 participants (7 male, 3 female) from ages 20 and 24 (mean 21) to find an average width and height of fingernail. We also requested users to perform tap gesture on electronic load-cell to measure how much pressure is applied on a surface to investigate the ability of strain gauges.
@@ -312,7 +312,6 @@ For each mode, we scale data's feature to the range of -1 to 1 and then train a 
 The accuracy due to chance was 20\%. Off-line accuracy was computed using 5-fold cross-validation of the evaluation data. The mean accuracy for mixed all forces data together across all participants was 76.9\% (SD: $\pm$13.17\%), and the confusing matrix is shown in \autoref{fig:postureResult}. 
 Note that most of the error happened at the relaxing state and angle of pitch 45 degrees with roll 45 degrees. For relaxing, strains were slightly changed at 0.4N and 0.6N pressure, it is hard to be classified with other angle classes. For the angle, we observe it is due to the user sometimes performing postures directly with fingernail instead of fingertip when the roll angle is higher. This caused strain gauges to have different values for each trail which raises this error classification.
 The accuracy for each force level is shown in \autoref{fig:postureResult}, which shows that the higher pressure level the better accuracy gets. If we drop 0.4N and 0.6N data, accuracy can reach 82.44\% (SD: $\pm$12.74\%). 
-% TODO 跑10fold cross user的results 
 %For sensing force touch, we used 5-fold cross-validation to evaluate. However, it shows that average can only distinguish 0.4N and 1.2N pressure with 70\% (SD: $\pm$12.74\%) accuracy.
 
 
@@ -398,7 +397,7 @@ For touchscreen, most of the devices can only distinguish binary state of touch.
 \textit{Minimize computing part and Power consumption:} As shown in \autoref{fig:main}, we currently put the computing part on the wrist as a wristband form factor. The form factor is limited to Arduino Nano board size. This motives us to minimize the computing part into a ring form factor in future work. For the power consumption, we currently use 120-ohm strain gauges which can be replaced by much higher ohm gauges. 
 % TODO check power consumption?
 
-\textit{Force touch and Sensing from all fingers:} Since currently only examined the daily usage pressure level, the higher force will be our future work to explore the device's force sensing. More than that, mounting the device on all our fingernails is also our future work for multi-touch method such as pinch and zooming input.
+\textit{Force touch and Sensing from all fingers:} Since currently only examined the daily usage pressure level, the higher force will be our future work to explore the device's force sensing. More than that, mounting the device on all our fingernails is also our future work for multi-touch input such as pinch and zooming.
 
 % TODO 可以討論多一點
 
