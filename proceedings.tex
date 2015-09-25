@@ -98,9 +98,10 @@
 
 \maketitle
 \begin{abstract}
-We present \projectName{}, a nail augmented device that senses user's fingernail contour and bend when force is applied on a surface. Using 3$\times$3 array of 0.2-mm strain gauges, \projectName{} is small enough to fit on fingernails, and at the same time, flexible and stretchable.
-We evaluate this interface in motionless and motion mode. For motionless mode, it can achieve 82.4\% accuracy for classifying different kinds of finger postures and distinguish motion swipe gestures with high accuracy (93.2\%).
-Since the device is always available, it allows users to perform swipe gestures on surfaces around or touch postures on touch screen devices to enable a variation of application usage.
+We present \projectName{}, a nail augmented device that senses user's fingernail contour and bend when force is applied on a surface. Using an array of 0.2-mm strain gauges, \projectName{} is small enough to fit on fingernails, and at the same time, flexible and stretchable.
+We evaluate this interface in motionless and motion mode. For motionless mode, it can achieve 82.4\% accuracy for classifying different kinds of finger postures. Switching to motion mode, swipe gestures are recognized with high accuracy (93.2\%).
+% Since the device is always available, 
+The continuous availability of \projectName{} allows users to perform swipe gestures or touch postures on nearby surfaces to enable a variation of application usage.
 We also show some example scenarios of using this technique such as smart TV and smart watches for extending input area and dimension.
 %applications such as quick swiping on surfaces around to control smart TV's or touching on touchscreen devices to enable different application short cuts.
 \end{abstract}
@@ -112,8 +113,9 @@ We also show some example scenarios of using this technique such as smart TV and
 
 
 \section{Introduction}
-Recent works have seen new proposals for nail augmented devices in body-attached computing. Fingernails have been adopted due to its characteristic of lacking perception, being non-obstructive and the most promising place for easy installation and removal\cite{MagNail}. Moreover, nail art has been proposed in previous works\cite{NailDisplay,NailO}.
-We believe using nail as a mounting location will become more popular in the future.
+Recent works have seen new proposals for nail augmented devices in body-attached computing. Fingernails have been widely adopted due to its characteristic of lacking perception, being non-obstructive and the most promising place for easy installation and removal\cite{MagNail}. 
+Moreover, device design as nail art has been proposed in previous works\cite{NailDisplay,NailO}.
+We believe using nails as a mounting location has the potential to become a mainstream method in the future.
 % TODO delete this sentence. but need for another? -- NAILDISPLAY HAS THIS SENTENCE
 
 % These devices are designed to be non-obstructive, small, lightweight and no disturbing in daily life. 
@@ -127,8 +129,8 @@ We believe using nail as a mounting location will become more popular in the fut
 % 在結尾開始講在nail上面做input的work
 Prior works on fingernail mounted devices develop schemes to  provide visual and tactile feedbacks.
 NailDisplay\cite{NailDisplay} mounts a visual display on top of fingernail to show the content underneath the fingertip. Ando et al.\cite{NailTDisplay} proposes to put a small voice coil to control the tactile feedback from surface by changing waveforms. More than that, FingerSight\cite{FingerSight} implements a device consisting of a camera to extract environmental information. Previous research also demonstrates using nail-mounted device to enrich input area. NailO\cite{NailO} proposes a capacitive sensor grid on top of the fingernail to sense swipe and tap gestures.
-uTrack\cite{uTrack} and FingerPad\cite{FingerPad} place small magnet on the fingertip, and use a magnetic field to track finger movements. TouchSense\cite{TouchSense} uses 3-axis accelerometer to detect finger postures for switching different modes of input.
-These works have proven the advantages of a device mounted on top of fingernails, yet have not explored the characteristics of a fingernail itself as a signal source.
+uTrack\cite{uTrack} and FingerPad\cite{FingerPad} places small magnets on the fingertip, and uses a magnetic field to track finger movements. TouchSense\cite{TouchSense} uses 3-axis accelerometer to detect finger postures for switching different modes of input.
+These works have proven the versatility of a device mounted on top of fingernails, yet have not explored the characteristics of a fingernail itself as a signal source.
 
 \begin{figure}
   \begin{center}
@@ -143,8 +145,8 @@ This brings us to think about using a fingernail as an input property proposed i
 Mascaro et al.\cite{Photoplethysmograph} also implements a nail-mounted device for observing changes in the reflection intensity on a fingernail. However, these techniques have only examined static input method. The movements sensing such as swiping we used in our daily life is not covered.
 %movements sensing which leaves in question the recognition of swiping gestures.
 
-In order to explore better sensing technique of nail augmentation, we aim to design a device that achieved the following designs. First, it has the ability of sensing simple gestures (e.g. swiping and tapping) on surfaces. Secondly, it has no restrictions on input area which enable users to perform gestures on surfaces around. Finally, it should come in a light and thin form factor to preserve the unobtrusiveness of fingernails.
-The proposed design will be a novel input device for increasing the mobility of touch screen.
+In order to explore better sensing technique of nail augmentation, we aim to design a device that achieved the following designs. First, it has the ability of sensing simple gestures (e.g. swiping and tapping) on surfaces. Secondly, it has no restrictions on input area which enable users to perform gestures on surrounding surfaces. Finally, it should come in a light and thin form factor to preserve the unobtrusiveness of fingernails.
+The proposed design will be a novel input device for increasing the mobility of touch interaction.
 
 In this paper, we developed a prototype, \projectName{} shown in \autoref{fig:main}(b), utilizing a grid of strain sensors to explore the technique of using strains from fingernail as input as sensing part. For computing part, a shield for Arduino Nano board shown in \autoref{fig:main}(c) was built and worn on the wrist by user.
 % TODO check this before submit, especially the c or b
@@ -224,14 +226,14 @@ Few main design requirements were needed. First of all, the device must be small
 Based on our pilot study, we developed \projectName{} using a 3$\times$3 array of 120-ohm 0.2-mm strain gauges for sensing part (Shown in \autoref{fig:main}(b)). 
 % TODO check this before submission
 Below the strain gauges, we used a stretchable and flexible artificial-skin to adhere sensors onto user's fingernail. The size of it only takes 1.0cm$\times$1.1cm which is smaller than 1 US cent, and the thickness of it is 1mm. Each of the strain gauge is directly wired to the computing part.
+%TODO changed by josh until here
 The computing hardware consists of an Arduino Nano board, two 8-to-1 analog switches(MAX4617, Maxim Integrated), a dual digital potentiometer (AD5231, Analog Devices), and two instrumentation amplifiers (AD623, Analog Devices and INA122U, Texas Instruments).
-
 
 
 % hardware confirmed!!
 
 
-The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDiagram}. First, the multiplexers are sequentially selected to connect one of the strain gauges. Upon gauge selection, it becomes one of the four resistors on the Wheatstone bridge. When the forces apply on fingertip, the strain of fingernail causes slight bend or contour which causes the ohm value to be lower or higher. Due to the changes of ohm value, one side of the voltage in Wheatstone bridge also changed. This difference becomes our sensing signal input.
+The diagram of the computing hardware is shown in \autoref{fig:completeCircuitDiagram}. First, the multiplexers are sequentially selected to connect one of the strain gauges. Upon gauge selection, it becomes one of the four resistors on the Wheatstone bridge. When the forces are applied on fingertip, the strain of fingernail causes slight bend or contour which causes the ohm value to be lower or higher. Due to the changes of ohm value, one side of the voltage in Wheatstone bridge also changed. This difference becomes our sensing signal input.
 % TODO 這裏似乎怪怪的？
 
 \begin{figure}[t!]
@@ -264,7 +266,7 @@ Since we need the daily usage pressure levels, we conducted 10 participants whic
 %requested users to perform tap gesture on electronic load-cell to measure how much pressure is applied on a surface to investigate the ability of strain gauges.
 
 
-
+\vspace{-0.2em}
 \subsection{Participants}
 We recruited 10 participants (6 male, 4 female) between the ages of 20 and 24 (mean 22.3). All participants are right-handed and drew with their right index fingers on the surface. Each participants received \$5 after one hour experiment.
 
@@ -277,12 +279,11 @@ We recruited 10 participants (6 male, 4 female) between the ages of 20 and 24 (m
   \label{fig:apparatus}
   \vspace{-1em}
 \end{figure}
-\vspace{0.1em}
+
 \subsection{Apparatus} %設備！
-The apparatus is shown in \autoref{fig:apparatus}. We used the same load-cell sensor (Error: $\pm 0.5$ grams) as used in our pilot study. In this experiment, we instrumented a 9 degree of freedom (9DOF) sensor on user's index finger. Since strain gauge is very sensitive to the strain, we avoid 9DOF sensor to contact fingernail. The 9DOF sensor is only used for checking whether user is performing the applicable angle for collecting data. The surface we used consists of medium density fibreboard. The board size is 18cm$\times$18cm and thickness of it is 3mm. 
+The apparatus is shown in \autoref{fig:apparatus}. We used the same load-cell sensor (Error: $\pm 0.5$ grams) as used in our pilot study. In this experiment, we instrumented a 9 degree of freedom (9DOF) sensor on user's index finger. Since strain gauge is very sensitive to outside forces, we avoided contact between 9DOF sensor and fingernail, shifting it to the side of index finger as shown in \autoref{fig:apparatus}(c). The 9DOF sensor is only used for checking whether user is performing the applicable angle for collecting data. The surface we used consists of medium density fibreboard. The board size is 18cm$\times$18cm and thickness of it is 3mm. 
 % TODO 要把那個板子說的更明確一些, 確認大小 
 %  which is a superior engineered wood used internationally in furniture construction.
-\vspace{0.1em}
 \subsection{Task and Procedure}
 
 \subsubsection{Motionless Mode}
@@ -334,46 +335,48 @@ The accuracy for each force level is shown in \autoref{fig:postureResult}, which
 
 
 \begin{figure}[hb!]
-	\begin{subfigure}{0.2\textwidth}
-	\hspace{-0.80em}\vspace{-0.3em}\includegraphics[width=1.05\linewidth, height=1.0\linewidth]{figures/overallConfusingMatrix.pdf} 
-%	\caption{Caption1}
-%	\label{fig:subim1}
-	\end{subfigure}
-	\begin{subfigure}{0.26\textwidth}
-	\vspace*{1ex}\includegraphics[width=1.0\linewidth, height=0.7\linewidth]{figures/postureAcc.pdf}
-
-%	\caption{Caption 2}
-%	\label{fig:subim2}
-	\end{subfigure}
-	 
+%	\begin{subfigure}{0.2\textwidth}
+%	\hspace{-0.80em}\vspace{-0.3em}\includegraphics[width=1.05\linewidth, height=1.0\linewidth]{figures/overallConfusingMatrix.pdf} 
+%%	\caption{Caption1}
+%%	\label{fig:subim1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.26\textwidth}
+%	\vspace*{1ex}\includegraphics[width=1.0\linewidth, height=0.7\linewidth]{figures/postureAcc.pdf}
+%
+%%	\caption{Caption 2}
+%%	\label{fig:subim2}
+%	\end{subfigure}
+	\includegraphics[width=1\columnwidth]{figures/postureMerge.pdf}	 
 %	\caption{Caption for this figure with two images}
 %	\label{fig:image2}
 
 
 %  \includegraphics[width=1\columnwidth]{figures/swipeconfusing.pdf}
-  \caption{Motionless mode: Mixed-force confusing Matrix and Accuracy for each level of pressure.}
+  \caption{Motionless mode: (a) Mixed-force confusing Matrix (b) Accuracy for each level of pressure.}
   \label{fig:postureResult}
   \vspace*{-2ex}
 \end{figure}
 
 \begin{figure}[hb]
-	\begin{subfigure}{0.2\textwidth}
-	\hspace{-0.5em}\includegraphics[width=1.02\linewidth, height=1.0\linewidth]{figures/swipeconfusing.pdf} 
-%	\caption{Caption1}
-%	\label{fig:subim1}
-	\end{subfigure}
-	\begin{subfigure}{0.26\textwidth}
-	\vspace*{1ex}\includegraphics[width=1.0\linewidth, height=0.8\linewidth]{figures/swipeAcc.pdf}
-
-%	\caption{Caption 2}
-%	\label{fig:subim2}
-	\end{subfigure}
+%swipeMerge
+\includegraphics[width=1\columnwidth]{figures/swipeMerge.pdf}	 
+%	\begin{subfigure}{0.2\textwidth}
+%	\hspace{-0.5em}\includegraphics[width=1.02\linewidth, height=1.0\linewidth]{figures/swipeconfusing.pdf} 
+%%	\caption{Caption1}
+%%	\label{fig:subim1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.26\textwidth}
+%	\vspace*{1ex}\includegraphics[width=1.0\linewidth, height=0.8\linewidth]{figures/swipeAcc.pdf}
+%
+%%	\caption{Caption 2}
+%%	\label{fig:subim2}
+%	\end{subfigure}
 	 
 %	\caption{Caption for this figure with two images}
 %	\label{fig:image2}
 
 %  \includegraphics[width=1\columnwidth]{figures/swipeconfusing.pdf}
-  \caption{Motion mode: Confusing Matrix and Accuracy for four direction swiping and tapping. }
+  \caption{Motion mode: (a) Confusing Matrix (b) Accuracy for four directions swiping and tapping. }
   \label{fig:swiperesult}
   \vspace*{-0.5em}
 \end{figure}
@@ -391,7 +394,6 @@ Based on the advantage of \projectName{}, we show two examples using this new in
 \subsection{Controlling Smart TV / Devices}
 % TODO Device
 Smart TV's require us to take out the remote for controlling. With \projectName{}, user can focus on the TV program without the effort of taking out a remote. User can use desk as an input surface to perform simple tap and swipe gestures for switching channels and selection. Furthermore, we also implement this on smart watch. Due to the smaller screen, it is handy to use swipe gestures on the surface as an interaction method.
-% TODO ？？
 
 \vspace{-0.2em}
 \subsection{Short cuts within application}
@@ -400,6 +402,7 @@ For touchscreen, most of the devices can only distinguish binary state of touch.
 \vspace{-0.2em}
 \section{Limitation and Future Work}
 \textit{Firmly sticker on fingernail:} In our evaluation of system, we noticed that the artificial-skin became not sticky enough through time and many times of usage. This caused the misclassifications in this situation due to sensing part becoming separated. We will continue to find another option for device fixation.
+% TODO How many time?
 
 \textit{Minimize computing part and Power consumption:} As shown in \autoref{fig:main}, we currently put the computing part on the wrist as a wristband form factor. The form factor is limited to Arduino Nano board size. This motives us to minimize the computing part into a ring form factor in future work. For the power consumption, we currently use 120-ohm strain gauges which can be replaced by much higher ohm gauges. 
 % TODO check power consumption?
@@ -409,7 +412,7 @@ For touchscreen, most of the devices can only distinguish binary state of touch.
 % TODO 可以討論多一點
 
 \section{Conclusion}
-In this paper, we evaluated using strains from fingernail as a input technique. We developed a nail-mounted device called \projectName{}, which is light and small enough to fit on top of fingernails. Evaluation of the this shows that it can distinguish finger postures on surface at average force level with 82.22\% accuracy. Not only for postures but also the swiping directions can identify in high accuracy (93.2\%). The system is also attractive for a nail-mounted always-available input for surface around which enrich the mobility of touchscreen. Our currently plans are to extend this system to all fingers for enabling multi-touch input.
+In this paper, we evaluated using strains from fingernail as a input technique. We developed a nail-mounted device called \projectName{}, which is light and small enough to fit on top of fingernails. Evaluation of the this shows that it can distinguish finger postures on surface at average force level with 82.22\% accuracy. Not only for postures but also the swiping directions can identify in high accuracy (93.2\%). The system is also attractive for a nail-mounted always-available input for surfaces nearby which enrich the mobility of touch interaction. Our currently plans are to sense force touch and extend this system to all fingers for enabling multi-touch input.
 %Evaluation of the this shows that it can distinguish swipe gestures on surface in high accuracy (93.2\%). Not only for swiping but also the finger postures can identify five different kinds of finger posture at average force level with 82.22\% accuracy.
 % TODO 已刪除用senario結尾很奇怪 但還是需要改嗎？
 
