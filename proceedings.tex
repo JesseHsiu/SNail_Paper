@@ -199,7 +199,7 @@ In summary, the main contributions of this paper are as follows: (1) We develope
 % \subsection{Acoustic work}
 % TapSense\cite{TapSense} use a acoustic way to identify which gesture is preformed by the users. They capture the sound when our fingers strike the screen, and use that sound pattern to recognize the gesture. This approach doesn't require user to wear anything, but will need a microphone which already built in smart phones. Scratch input use the sound when fingernail is dragged over the surface of a textured material as finger input surface. Six Scratch Input gestures at about 90\% accuracy with less than five minutes of training and on wide variety of surfaces. However, the interface table will not always exist.
 
-% TODO 似乎講太多次要fit on fingernail?
+
 \section{Prototype Design}
 Few main design requirements were needed. First of all, the device must be small enough to fit within fingernail. Second, it should have ability of sensing slightly changes of the strain from fingernail. Last but not least, it has to be reusable and easy for installation and removing. Thus, we concluded that using a 2D array of strain gauges is the proper solution for this prototype. To derive a general fitting, we conducted a 10 users (7 male, 3 female) pilot study to collect the average size of fingernail. The pilot study showed, fingernail width is 1.14cm (SD=0.14) and height is 1.21cm (SD=0.17).
 
@@ -270,18 +270,18 @@ We recruited 10 participants (6 male, 4 female) between the ages of 20 and 24 (m
   \label{fig:apparatus}
   \vspace{-1em}
 \end{figure}
-
+\vspace{0.1em}
 \subsection{Apparatus} %設備！
-The apparatus is shown in \autoref{fig:apparatus}. We used the same load-cell sensor (Error: $\pm 0.5$ grams) as our pilot study. In this experiment, we instrumented a 9 degree of freedom (9DOF) sensor on user's index finger. Since strain gauge is very sensitive to the strain, we avoid 9DOF sensor to contact fingernail. The 9DOF sensor is only used for checking whether user is performing the applicable angle for collecting data. The surface we used consists of medium density fibreboard.
-% TODO 要把那個板子說的更明確一些
-
+The apparatus is shown in \autoref{fig:apparatus}. We used the same load-cell sensor (Error: $\pm 0.5$ grams) as used in our pilot study. In this experiment, we instrumented a 9 degree of freedom (9DOF) sensor on user's index finger. Since strain gauge is very sensitive to the strain, we avoid 9DOF sensor to contact fingernail. The 9DOF sensor is only used for checking whether user is performing the applicable angle for collecting data. The surface we used consists of medium density fibreboard. The board size is 18cm$\times$18cm and thickness of it is 3mm. 
+% TODO 要把那個板子說的更明確一些, 確認大小 
+%  which is a superior engineered wood used internationally in furniture construction.
+\vspace{0.1em}
 \subsection{Task and Procedure}
 
 \subsubsection{Motionless Mode}
 In this mode, we tried a variety of finger postures with different pressure levels.
 For each trail, the participants were instructed to adjust their finger pitch and roll angles which are shown in \autoref{fig:fingerposture}. A relaxing posture was added for keeping finger at the same initial position without touching the surface.
 The forces are chosen from our pilot user study: average force (0.8N), one SD forces (0.6N, 1.0N), two SD forces (0.4N, 1.2N). The participants were asked to straighten their finger during the entire experiment. In front of the user, there is a screen showing current (sensing from 9DOF and load-cell sensor) and instructed angle and force. Before each trail, participants were required to return the relaxing posture. When participants adjusted their finger to the correct posture and performed the correct pressure (tolerance: $\pm 5$grams), we start to collect data. Once data is inapplicable during the study, recorder will automatically skip the data. For each user, we collected 5 postures in 5 forces for 5 times, which is total 125 trials.
-% TODO 有一點重複？ => Once posture or pressure is inapplicable during the study, recorder will automatically skip the data.
 
 \subsubsection{Motion Mode}
 We chose four swipe directions (up, down, left, right) and tap for this study.
@@ -293,7 +293,7 @@ Users were requested to perform gestures shown on computer screen in front. On t
   \includegraphics[width=1\columnwidth]{figures/fingerposture.pdf}
   \caption{Motionless posture sets: (a) pitch 15 degrees, (b) pitch 45 degrees, (c) pitch 15 degrees and roll 45 degrees, (d) pitch 45 degrees and roll 45 degrees}
   \label{fig:fingerposture}
-  	\vspace*{-1ex}
+%  	\vspace*{-4ex}
 \end{figure}
 
 
@@ -311,7 +311,7 @@ For each mode, we scale data's feature to the range of -1 to 1 and then train a 
 \subsubsection{Motionless Mode}
 The accuracy due to chance was 20\%. Off-line accuracy was computed using 5-fold cross-validation of the evaluation data. The mean accuracy for mixed all forces data together across all participants was 76.9\% (SD: $\pm$13.17\%), and the confusing matrix is shown in \autoref{fig:postureResult}. 
 Note that most of the error happened at the relaxing state and angle of pitch 45 degrees with roll 45 degrees. For relaxing, strains were slightly changed at 0.4N and 0.6N pressure, it is hard to be classified with other angle classes. For the angle, we observe it is due to the user sometimes performing postures directly with fingernail instead of fingertip when the roll angle is higher. This caused strain gauges to have different values for each trail which raises this error classification.
-The accuracy for each force level is shown in \autoref{fig:postureResult}, which shows that the higher pressure level the better accuracy gets. If we drop 0.4N and 0.6N data, accuracy can reach 82.44\% (SD: $\pm$12.74\%). Cross-user evaluation using 10-fold cross-validation was computed.
+The accuracy for each force level is shown in \autoref{fig:postureResult}, which shows that the higher pressure level the better accuracy gets. If we drop 0.4N and 0.6N data, accuracy can reach 82.44\% (SD: $\pm$12.74\%). 
 % TODO 跑10fold cross user的results 
 %For sensing force touch, we used 5-fold cross-validation to evaluate. However, it shows that average can only distinguish 0.4N and 1.2N pressure with 70\% (SD: $\pm$12.74\%) accuracy.
 
@@ -366,44 +366,49 @@ The accuracy for each force level is shown in \autoref{fig:postureResult}, which
 %	\caption{Caption for this figure with two images}
 %	\label{fig:image2}
 
-
 %  \includegraphics[width=1\columnwidth]{figures/swipeconfusing.pdf}
   \caption{Motion mode: Confusing Matrix and Accuracy for four direction swiping and tapping. }
   \label{fig:swiperesult}
   \vspace*{-0.5em}
 \end{figure}
+The mix-force leave-one-user-out accuracy was computed, which is low at an average of 55.2\%(SD: $\pm 13.6$\%).
 
 \subsubsection{Motion Mode}
-The result of this study is shown in \autoref{fig:swiperesult}. Off-line accuracy was computed using 10-fold cross-validation of the evaluation data. The mean accuracy across all participants is 93.2\%(SD: $\pm 5.98$\%). Most of the error occurred during swipe down and up gestures, likely due to the higher friction causing users to  perform gestures lightly on the surface which caused strains on fingernail to become less observable for the sensor.
-% TODO 跑10-fold user之間的data
-
-%and the caused of the this due to the user sometimes perform postures directly using nail to touch the surface which caused strain gauges different value. We also run 10-fold cross-validation for our pressure value. It turns out that the device cannot distinguish the difference of slightly changes of pressure. The device only can distinguish the pressure level of difference with 90\% accuracy when it comes to 0.4N with 1.2N.
+The result of this study is shown in \autoref{fig:swiperesult}. Off-line accuracy was computed using 10-fold cross-validation of the evaluation data. The mean accuracy across all participants is 93.2\%(SD: $\pm 5.98$\%). Most of the error occurred during swipe down and up gestures, likely due to the higher friction causing users to  perform gestures lightly on the surface which caused strains on fingernail to become less observable for the sensor. Leave-one-user-out is also computed, the accuracy was 44.2\%(SD: $\pm 12.9$\%) which indicates strains are significant different between participants.
 
 
-
+\vspace{-0.2em}
 \section{Example Application}
 Based on the advantage of \projectName{}, we show two examples using this new interaction technique and are included in video.
+
+\vspace{-0.2em}
 \subsection{Controlling Smart TV / Devices}
 % TODO Device
 Smart TV's require us to take out the remote for controlling. With \projectName{}, user can focus on the TV program without the effort of taking out a remote. User can use desk as an input surface to perform simple tap and swipe gestures for switching channels and selection. Furthermore, we also implement this on smart watch. Due to the smaller screen, it is handy to use swipe gestures on the surface as an interaction method.
-% TODO
+% TODO ？？
+
+\vspace{-0.2em}
 \subsection{Short cuts within application}
 For touchscreen, most of the devices can only distinguish binary state of touch. Using \projectName{}, user can use different finger posture to enable shortcuts such as right clicking on computer. For instance, the file system on smart phone can be controlled with 45 degree of roll angle to show a drop-down list to delete, move, and change the file name.
 
-
+\vspace{-0.2em}
 \section{Limitation and Future Work}
 \textit{Firmly sticker on fingernail:} In our evaluation of system, we noticed that the artificial-skin became not sticky enough through time and many times of usage. This caused the misclassifications in this situation due to sensing part becoming separated. We will continue to find another option for device fixation.
 
-\textit{Minimize computing part and Power consumption:} As shown in \autoref{fig:main}, we currently put the computing part on the wrist as a wristband form factor. The form factor is limited to Arduino Nano board size. This motives us to minimize the computing part into a ring form factor in future work. For the power consumption, we currently use 120-ohm strain gauges which can be replaced by much higher ohm gauges.
+\textit{Minimize computing part and Power consumption:} As shown in \autoref{fig:main}, we currently put the computing part on the wrist as a wristband form factor. The form factor is limited to Arduino Nano board size. This motives us to minimize the computing part into a ring form factor in future work. For the power consumption, we currently use 120-ohm strain gauges which can be replaced by much higher ohm gauges. 
+% TODO check power consumption?
 
-\textit{Sensing from all fingers:} Mounting the device on all our fingernails is also our future work. Since more fingers are evolved, we can enable more functions such as multi-touch input like pinch and zoom. 
-% TODO 可以討論多一點，然後是否要回報cross user的數據
+\textit{Force touch and Sensing from all fingers:} Since currently only examined the daily usage pressure level, the higher force will be our future work to explore the device's force sensing. More than that, mounting the device on all our fingernails is also our future work for multi-touch method such as pinch and zooming input.
+
+%Mounting the device on all our fingernails is also our future work. Since more fingers are evolved, we can enable more functions such as multi-touch input like pinch and zoom. 
+% TODO 可以討論多一點
 %黏不緊的問題
 % 做到像是筆tracking的部分，偵測角度加上移動方向
 
 \section{Conclusion}
-In this paper, we evaluated using strains from fingernail as a input technique. We developed a nail-mounted device called \projectName{}, which is light and small enough to fit on top of fingernails. Evaluation of the this shows that it can distinguish swipe gestures on surface in high accuracy (93.2\%). Not only for swiping but also the finger postures can identify five different kinds of finger posture at average force level with 82.22\% accuracy. The system is also attractive for a nail-mounted always-available input for surface around which enrich the mobility of touchscreen. We also implemented applications for this technique, including remote controlling smart TV and watches and enabling short cuts on touchscreen device. Our currently plans are to extend this system to all fingers input.
-% TODO 用senario結尾很奇怪
+In this paper, we evaluated using strains from fingernail as a input technique. We developed a nail-mounted device called \projectName{}, which is light and small enough to fit on top of fingernails. Evaluation of the this shows that it can distinguish finger postures on surface at average force level with 82.22\% accuracy. Not only for postures but also the swiping directions can identify in high accuracy (93.2\%). The system is also attractive for a nail-mounted always-available input for surface around which enrich the mobility of touchscreen. Our currently plans are to extend this system to all fingers for enabling multi-touch input.
+%Evaluation of the this shows that it can distinguish swipe gestures on surface in high accuracy (93.2\%). Not only for swiping but also the finger postures can identify five different kinds of finger posture at average force level with 82.22\% accuracy.
+% TODO 已刪除用senario結尾很奇怪 但還是需要改嗎？
 
 % \subsection{Title and Authors}
 % \subsubsection{Sub-subsections}
@@ -498,7 +503,7 @@ In this paper, we evaluated using strains from fingernail as a input technique. 
 %
 % Or, just remove \balance and give up on balancing the last page.
 %
-%\balance{}
+\balance{}
 
 
 % REFERENCES FORMAT
